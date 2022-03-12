@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   PhoneBook.hpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/02/02 21:34:55 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/03/12 21:23:02 by rubennijhui   ########   odam.nl         */
+/*   Created: 2022/03/12 17:26:26 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2022/03/12 21:30:15 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
-int	main(void)
+#include "Contact.hpp"
+
+class PhoneBook
 {
-	PhoneBook	phonebook;
-	bool		run;
-	std::string	command;
+	private:
+		Contact	contacts[8];
+		int		amount;
 
-	run = true;
-	while (run)
-	{
-		std::cout << ">";
-		std::getline(std::cin, command);
-		if (command == "ADD")
-			phonebook.addContact();
-		else if (command == "SEARCH")
-			phonebook.searchContact();
-		else if (command == "EXIT")
-			run = false;
-	}
-	return (0);
-}
+	public:
+		PhoneBook(void);
+		~PhoneBook(void);
+		void	addContact(void);
+		void	searchContact(void);
+};
+
+#endif
