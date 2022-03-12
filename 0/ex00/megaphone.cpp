@@ -1,37 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   megaphone.cpp                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/12 16:56:42 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2022/03/12 18:38:07 by rubennijhui   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-
-void	output_to_uppercase(char **string)
-{
-	int	argument;
-	int	letter;
-
-	argument = 0;
-	while (string[argument] != '\0')
-	{
-		letter = 0;
-		while (string[argument][letter] != '\0')
-		{
-			if (string[argument][letter] > 96 && string[argument][letter] < 123)
-			{
-				string[argument][letter] -= 32;
-				std::cout << string[argument][letter];
-			}
-			else
-				std::cout << string[argument][letter];
-			letter++;
-		}
-		argument++;
-	}
-	std::cout << "\n";
-}
+#include <string.h>
 
 int	main(int argc, char **argv)
 {
-	if (argc == 1)
+	if (argc > 1)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-		return (0);
+		for (int j = 1; j < argc; j++) 
+		{
+			for (int i = 0; i < (int)strlen(argv[j]); i++)
+			{
+				std::cout << (char)toupper(argv[j][i]);
+			}
+		}
 	}
-	output_to_uppercase(argv + 1);
+	else
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	std::cout << '\n';
 	return 0;
 }
