@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/03/12 22:12:36 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/03/13 12:43:01 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,15 @@ PhoneBook::~PhoneBook(void)
 
 void PhoneBook::addContact(void)
 {
-	bool	run;
-	int	current_req;
-
-	char *questionnares[] = {"Name","Last","Test","Test2"};
-	std::string contact_info;
-	run = true;
-	current_req = 0;
-	while (run)
-	{
-		std::cout << "> Input " << questionnares[current_req] << ":";
-		std::getline(std::cin, contact_info[current_req]);
-		current_req++;
-	}
+	this->contacts[this->amount].setInformation();
+	this->amount++;
 	return;
 }
 
 void PhoneBook::searchContact(void)
 {
+	std::cout << "           |          |          |           " << std::endl;
+	for (int i = 0; i < this->amount; i++)
+		this->contacts[i].displayData();
 	return;
 }

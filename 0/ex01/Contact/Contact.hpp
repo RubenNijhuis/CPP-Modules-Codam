@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 19:41:22 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/03/12 21:24:11 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/03/13 10:36:05 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,23 @@
 class Contact
 {
 	private:
-		char	*first_name;
-		char	*last_name;
-		char	*nick_name;
-		char	*phone_number;
-		char	*darkest_secret;
+		int					index;
+		static std::string	fields_name[5];
+		std::string			informations[5];
+
+		enum Field {
+			FirstName,
+			LastName,
+			Nickname,
+			Phone,
+			Secret
+		};
 
 	public:
 		Contact(void);
 		~Contact(void);
-		void displayData(void);
+		void	displayData(void);
+		void	setInformation(void);
 };
 
 #endif

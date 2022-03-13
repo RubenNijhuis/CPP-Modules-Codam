@@ -6,32 +6,52 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/03/12 21:34:03 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/03/13 12:42:30 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
+#include <iomanip>
+#include <string.h>
 #include "Contact.hpp"
+
+std::string Contact::fields_name[5] = {
+	"First Name",
+	"Last Name",
+	"Nickname",
+	"Phone",
+	"Darkest Secret"
+};
 
 Contact::Contact(void)
 {
-	std::cout << "Contact constructor called" << std::endl;
+	this->index = 0;
 	return;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Contact destructor called" << std::endl;
+	return;
+}
+
+void	Contact::setInformation(void)
+{
+	for (int i = FirstName; i <= Secret; i++)
+	{
+		std::cout << "# " << Contact::fields_name[i] << ":\n+ ";
+		std::getline(std::cin, this->informations[i]);
+	}
 	return;
 }
 
 void Contact::displayData(void)
 {
-	std::cout << this->first_name << std::endl;
-	std::cout << this->last_name << std::endl;
-	std::cout << this->nick_name << std::endl;
-	std::cout << this->phone_number << std::endl;
-	std::cout << this->darkest_secret << std::endl;
+	std::cout << "|";
+	for (int i = FirstName; i <= Phone; i++)
+	{
+		std::cout << std::setw(10);
+		std::cout << this->informations[i] << "|";
+	}
+	std::cout << std::endl;
 	return;
 }

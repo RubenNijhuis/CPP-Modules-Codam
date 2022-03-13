@@ -6,20 +6,26 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/03/12 21:31:25 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/03/13 11:23:38 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook.out
+#======= Vars =======#
+
+NAME	= CrappyPhoneBook
+
+#======= Input ======#
 
 INCLUDES := -I Contact/ \
-			-I PhoneBook \
+			-I PhoneBook/ \
 
 SRC 	= PhoneBook/PhoneBook.cpp \
 		  Contact/Contact.cpp \
 		  main.cpp
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
+
+#======= Rules ======#
 
 all: $(NAME)
 
@@ -36,4 +42,4 @@ clean:
 fclean:
 	@rm -rf $(NAME)
 
-.PHONY: run all clean fclean re libft
+.PHONY: run all clean fclean re
