@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/16 23:55:22 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/16 23:57:55 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	Harl::makeComplainMent(std::string level)
 	funcmap["INFO"] = info;
 	funcmap["WARNING"] = warning;
 	funcmap["ERROR"] = error;
+	
 	switch (complainLevel)
 	{
 		case 0:

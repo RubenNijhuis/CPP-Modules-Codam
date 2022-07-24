@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/10 17:59:48 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/07/24 18:19:40 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Contact::~Contact(void)
 
 bool	Contact::setInformation(void)
 {
-	for (int i = FirstName; i <= Secret; i++)
+	for (uint32_t i = FirstName; i <= Secret; i++)
 	{
 		std::cout << "# " << Contact::fields_name[i] << ":\n+ ";
 		std::getline(std::cin, this->information[i]);
@@ -46,10 +46,10 @@ bool	Contact::setInformation(void)
 	return (true);
 }
 
-void Contact::displayData(void)
+void Contact::displayCompactData(void)
 {
 	std::cout << "|";
-	for (int i = FirstName; i <= Phone; i++)
+	for (uint32_t i = FirstName; i <= Phone; i++)
 	{
 		if (this->information[i].length() > 9)
 		{
@@ -63,6 +63,16 @@ void Contact::displayData(void)
 			std::cout << this->information[i];
 		}
 		std::cout << "|";
+	}
+	std::cout << std::endl;
+	return;
+}
+
+void Contact::displayAllData(void)
+{
+	for (uint32_t i = FirstName; i <= Secret; i++)
+	{
+		std::cout << "# " << this->information[i] << std::endl;
 	}
 	std::cout << std::endl;
 	return;

@@ -6,27 +6,31 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 16:56:42 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/03/12 18:38:07 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/07/24 16:55:27 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string.h>
 
-int	main(int argc, char **argv)
+int32_t	main(int32_t argc, char *argv[])
 {
 	if (argc > 1)
 	{
-		for (int j = 1; j < argc; j++) 
+		for (int32_t curr_arg = 1; curr_arg < argc; curr_arg++) 
 		{
-			for (int i = 0; i < (int)strlen(argv[j]); i++)
+			size_t len = strlen(argv[curr_arg]);
+			for (size_t letter = 0; letter < len; letter++)
 			{
-				std::cout << (char)toupper(argv[j][i]);
+				char transformed_char = toupper(argv[curr_arg][letter]);
+				std::cout << transformed_char;
 			}
 		}
 	}
 	else
+	{
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	}
 	std::cout << '\n';
-	return 0;
+	return (0);
 }
