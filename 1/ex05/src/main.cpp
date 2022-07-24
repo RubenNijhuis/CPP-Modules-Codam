@@ -6,30 +6,26 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/11 09:54:30 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/05/16 15:56:59 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
+#include "Harl.hpp"
 
-int32_t	main(void)
+#include <iostream>
+
+int32_t	error_message(std::string error)
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
+	std::cout << error << std::endl;
+	return (1);
+}
+
+int32_t main(int argc, char *argv[])
+{
+	Harl	harl;
+	
+	if (argc != 2)
+		return (error_message("Error: you did not enter the right amount of arguments"));
+	harl.complain(argv[1]);
 	return (0);
 }

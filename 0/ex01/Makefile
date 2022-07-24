@@ -6,40 +6,59 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/03/13 11:23:38 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/07/24 20:25:40 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-#======= Vars =======#
+#======= General =======#
+CC			=	g++
 
-NAME	= CrappyPhoneBook
+SRC_DIR		=	src
+OBJS_DIR	=	objs
+BIN_DIR		=	bin
+INCLUDE_DIR	=	include
+EXEC_NAME	=	CrappyPhonebook
+NAME		=	$(BIN_DIR)/$(EXEC_NAME)
+OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
-#======= Input ======#
+#======== SRCS =========#
 
-INCLUDES := -I Contact/ \
-			-I PhoneBook/ \
+INC			=	-I src/Contact \
+				-I src/PhoneBook
 
-SRC 	= PhoneBook/PhoneBook.cpp \
-		  Contact/Contact.cpp \
-		  main.cpp
+SRCS		=	main.cpp \
+				PhoneBook/PhoneBook.cpp \
+				Contact/Contact.cpp
 
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
-#======= Rules ======#
+#== Compilation stuff ==#
 
+CFLAGS		=	-Wall -Wextra -Werror $(INC)
+
+#======= Rules =========#
+
+objs/%.o:src/%.cpp
+	@mkdir -p $(dir $@)
+	@$(CC) -c $(CFLAGS) -o $@ $^
+	@echo "🔨 Compiling: $^"
+	
 all: $(NAME)
 
-$(NAME):$(SRC)
-	g++ $(FLAGS) $(SRC) $(INCLUDES) -o $(NAME)
-
 run: $(NAME)
-	./$(NAME)
+	./$(OUTPUT)
 
-re: fclean all
+$(NAME):$(OBJS)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
+	@echo "Finished building: $@"
 
 clean:
+	@rm -rf $(OBJS_DIR)
 
-fclean:
+fclean: clean
 	@rm -rf $(NAME)
+
+re: fclean all
 
 .PHONY: run all clean fclean re

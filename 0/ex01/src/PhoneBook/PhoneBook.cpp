@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 18:29:26 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/07/24 18:34:49 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void PhoneBook::searchContact(void)
 		}
 		std::cout << std::endl;
 
+		// Setup a new request loop to ask which contact is to be shown in full
 		while (run)
 		{
 			// Reset variable each loop

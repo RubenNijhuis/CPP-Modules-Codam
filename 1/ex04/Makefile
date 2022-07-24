@@ -3,64 +3,67 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: rnijhuis <rnijhuis@student.codam.nl>         +#+                      #
+#    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/04/25 13:07:38 by rnijhuis      #+#    #+#                  #
-#    Updated: 2022/05/11 14:36:14 by rnijhuis      ########   odam.nl          #
+#    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
+#    Updated: 2022/07/24 22:41:22 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-#=====================================#
-#========= General variables =========#
-#=====================================#
+#======= General =======#
 
-NAME := bin/violence
-BIN_DIR := bin
-INCLUDE_DIR := include
-OBJS_DIR := objs
-SRC_DIR := src
+CC			=	g++
 
-#=====================================#
-#=============== Input ===============#
-#=====================================#
+ASSETS_DIR	=	assets
+SRC_DIR		=	src
+OBJS_DIR	=	objs
+BIN_DIR		=	bin
+INCLUDE_DIR	=	include
+EXEC_NAME	=	sed
+NAME		=	$(BIN_DIR)/$(EXEC_NAME)
+OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
-INC := -I $(INCLUDE_DIR)
+#======== SRCS =========#
 
-SRCS :=		main.cpp \
+INPUT_WORD	=	""
+REPl_WORD	=	""
 
-OBJS := $(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
+INPUT_FILE	=	$(ASSETS_DIR)/www.txt $(INPUT_WORD) $(REPl_WORD)
 
-#=====================================#
-#========= Command arguments =========#
-#=====================================#
+INC			=	-I $(INCLUDE_DIR)
 
-CXX := clang++
-CXXFLAGS := -Wall -Wextra -Werror -I -std=c++98 $(INC)
+SRCS		=	main.cpp \
+				Sed.cpp
 
-#=====================================#
-#=============== Rules ===============#
-#=====================================#
+OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
+
+#== Compilation stuff ==#
+
+CFLAGS		=	-Wall -Wextra -Werror $(INC)
+
+#======= Rules =========#
 
 objs/%.o:src/%.cpp
 	@mkdir -p $(dir $@)
-	@$(CXX) -c $(CXXFLAGS) -o $@ $^
+	@$(CC) -c $(CFLAGS) -o $@ $^
 	@echo "🔨 Compiling: $^"
-
+	
 all: $(NAME)
 
-$(NAME):$(OBJS)
-	@$(CXX) $(OBJS) -o $(NAME)
-	@echo "✅ Built $(NAME)"
-
 run: $(NAME)
-	@./$(NAME)
+	./$(OUTPUT) $(INPUT_FILE) 
+
+$(NAME):$(OBJS)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
+	@echo "Finished creating: $@"
 
 clean:
 	@rm -rf $(OBJS_DIR)
 
-fclean:	clean
+fclean: clean
 	@rm -rf $(NAME)
 
-re:	fclean $(NAME)
+re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: run all clean fclean re

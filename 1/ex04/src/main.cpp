@@ -3,33 +3,49 @@
 /*                                                        ::::::::            */
 /*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
+/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/11 09:54:30 by rnijhuis      ########   odam.nl         */
+/*   Created: 2022/07/24 22:44:38 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2022/07/24 22:44:48 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
 
-int32_t	main(void)
+#include <string>
+#include <iostream>
+
+#include "Sed.hpp"
+
+bool	check_inputs(int32_t argc, char *argv[])
 {
+	if (argc != 4)
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		std::cout << "Usage: ./sed <file_path> \"original_text\" \"new_text\"" << std::endl;
+		return (false);
 	}
+	else if (strlen(argv[1]) == 0 || strlen(argv[2]) == 0 || strlen(argv[3]) == 0)
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
+		std::cout << "Error: input arguments may not be empty" << std::endl;
+		return (false);
 	}
+	return (true);
+}
+
+int32_t	main(int32_t argc, char *argv[])
+{
+	if (check_inputs(argc, argv) == false)
+		return (1);
+
+	// Setup class instance
+	Sed	sed(argv[2], argv[3]);
+
+	// Check if files can be opened/created
+	if (sed.check_files(argv[1]))
+		return (1);
+	
+	// Action
+	sed.replace();
+	sed.output();
+
 	return (0);
 }

@@ -3,60 +3,59 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: rnijhuis <rnijhuis@student.codam.nl>         +#+                      #
+#    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/04/25 13:07:38 by rnijhuis      #+#    #+#                  #
-#    Updated: 2022/05/11 09:51:27 by rnijhuis      ########   odam.nl          #
+#    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
+#    Updated: 2022/07/24 20:27:06 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-#=====================================#
-#========= General variables =========#
-#=====================================#
+#======= General =======#
+CC			=	g++
 
-NAME := main
-OBJS_DIR := objs
-SRC_DIR := src
+SRC_DIR		=	src
+OBJS_DIR	=	objs
+BIN_DIR		=	bin
+INCLUDE_DIR	=	include
+EXEC_NAME	=	Zombie
+NAME		=	$(BIN_DIR)/$(EXEC_NAME)
+OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
-#=====================================#
-#=============== Input ===============#
-#=====================================#
+#======== SRCS =========#
 
-SRCS :=		main.cpp \
+INC			=	-I $(INCLUDE_DIR)
 
-OBJS := $(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
+SRCS		=	main.cpp
 
-#=====================================#
-#========= Command arguments =========#
-#=====================================#
+OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
-CXX := clang++
-CXXFLAGS := -Wall -Wextra -Werror -I -std=c++98 $(INC)
+#== Compilation stuff ==#
 
-#=====================================#
-#=============== Rules ===============#
-#=====================================#
+CFLAGS		=	-Wall -Wextra -Werror $(INC)
+
+#======= Rules =========#
 
 objs/%.o:src/%.cpp
 	@mkdir -p $(dir $@)
-	@$(CXX) -c $(CXXFLAGS) -o $@ $^
+	@$(CC) -c $(CFLAGS) -o $@ $^
 	@echo "🔨 Compiling: $^"
-
+	
 all: $(NAME)
 
-$(NAME):$(OBJS)
-	@$(CXX) $(OBJS) -o $(NAME)
-	@echo "✅ Built $(NAME)"
-
 run: $(NAME)
-	@./$(NAME)
+	./$(OUTPUT)
+
+$(NAME):$(OBJS)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
+	@echo "Finished creating: $@"
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(OBJS_DIR)
 
-fclean:	clean
-	@rm -f $(OBJS) $(NAME)
+fclean: clean
+	@rm -rf $(NAME)
 
-re:	fclean $(NAME)
+re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: run all clean fclean re

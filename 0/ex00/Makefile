@@ -6,25 +6,56 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/24 18:31:42 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/07/24 20:16:32 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= megaphone
-SRC		= megaphone.cpp
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+#======= General =======#
+CC			=	g++
 
+SRC_DIR		=	src
+OBJS_DIR	=	objs
+BIN_DIR		=	bin
+INCLUDE_DIR	=	include
+EXEC_NAME	=	megaphone
+NAME		=	$(BIN_DIR)/$(EXEC_NAME)
+OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
+
+#======== SRCS =========#
+
+INC			=
+
+SRCS		=	megaphone.cpp
+
+OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
+
+#== Compilation stuff ==#
+
+CFLAGS		=	-Wall -Wextra -Werror $(INC)
+
+#======= Rules =========#
+
+objs/%.o:src/%.cpp
+	@mkdir -p $(dir $@)
+	@$(CC) -c $(CFLAGS) -o $@ $^
+	@echo "🔨 Compiling: $^"
+	
 all: $(NAME)
 
-$(NAME): $(SRC)
-	g++ $(FLAGS) $(SRC) -o $(NAME)
+$(NAME):$(OBJS)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
+	@echo "Finished building: $@"
+
+run: $(NAME)
+	./$(OUTPUT)
+
+clean:
+	@rm -rf $(OBJS_DIR)
+
+fclean: clean
+	@rm -rf $(NAME)
 
 re: fclean all
 
-clean:
-	@rm -rf $(NAME)
-
-fclean:
-	@rm -rf $(NAME)
-
-.PHONY: run all clean fclean re libft
+.PHONY: run all clean fclean re

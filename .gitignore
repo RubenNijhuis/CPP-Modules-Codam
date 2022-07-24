@@ -3,5 +3,7 @@
 *.a
 *.out
 *.pdf
-/objs
+objs/
+obj/
+bin/
 .vscode/
