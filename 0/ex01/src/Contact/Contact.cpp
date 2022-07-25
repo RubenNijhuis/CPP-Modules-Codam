@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 18:19:40 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/07/25 11:57:00 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@ std::string Contact::fields_name[5] = {
 	"Darkest Secret"
 };
 
-Contact::Contact(void)
+Contact::Contact(void) : index(0) { }
+
+Contact::~Contact(void) { }
+
+void	Contact::setIndex(uint32_t index)
 {
-	this->index = 0;
-	return;
+	this->index = index;
 }
 
-Contact::~Contact(void)
+bool	Contact::setInformation(uint32_t index)
 {
-	return;
-}
-
-bool	Contact::setInformation(void)
-{
+	this->index = index;
 	for (uint32_t i = FirstName; i <= Secret; i++)
 	{
 		std::cout << "# " << Contact::fields_name[i] << ":\n+ ";
@@ -49,7 +48,13 @@ bool	Contact::setInformation(void)
 void Contact::displayCompactData(void)
 {
 	std::cout << "|";
-	for (uint32_t i = FirstName; i <= Phone; i++)
+
+	// Output index
+	std::cout << std::setw(10);
+	std::cout << this->index;
+	std::cout << "|";
+
+	for (uint32_t i = FirstName; i <= Nickname; i++)
 	{
 		if (this->information[i].length() > 9)
 		{
@@ -65,7 +70,6 @@ void Contact::displayCompactData(void)
 		std::cout << "|";
 	}
 	std::cout << std::endl;
-	return;
 }
 
 void Contact::displayAllData(void)
@@ -75,5 +79,4 @@ void Contact::displayAllData(void)
 		std::cout << "# " << this->information[i] << std::endl;
 	}
 	std::cout << std::endl;
-	return;
 }

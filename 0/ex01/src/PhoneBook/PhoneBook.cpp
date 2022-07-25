@@ -6,23 +6,16 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 18:34:49 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/07/25 11:56:12 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
-{
-	this->amount = 0;
-	return;
-}
+PhoneBook::PhoneBook(void) : amount(0) { }
 
-PhoneBook::~PhoneBook(void)
-{
-	return;
-}
+PhoneBook::~PhoneBook(void) { }
 
 void PhoneBook::addContact(void)
 {
@@ -30,30 +23,31 @@ void PhoneBook::addContact(void)
 	if (this->amount == 8)
 	{
 		for (uint32_t i = 0; i < 7; i++)
+		{
 			this->contacts[i] = this->contacts[i + 1];
-		if (this->contacts[this->amount - 1].setInformation() == false)
+			this->contacts[i].setIndex(i + 1);
+		}
+		if (this->contacts[this->amount - 1].setInformation(this->amount) == false)
 			return;
 	}
 	else
 	{
-		if (this->contacts[this->amount].setInformation() == false)
+		if (this->contacts[this->amount].setInformation(this->amount + 1) == false)
 			return;
 		this->amount++;
 	}
-	return;
 }
 
 void PhoneBook::searchContact(void)
 {
 	uint32_t	selected_contact_id;
 	std::string selected_content_str;
-	bool		run = true;
 	bool		correct_format = true;
 
 	if (this->amount > 0)
 	{
 		// Display all the contacts in the list
-		std::cout << "|FIRSTNAME | LASTNAME | NICKNAME |  NUMBER  |" << std::endl;
+		std::cout << "|  INDEX   |FIRSTNAME | LASTNAME | NICKNAME |" << std::endl;
 		for (uint32_t i = 0; i < this->amount; i++)
 		{
 			this->contacts[i].displayCompactData();
@@ -61,9 +55,8 @@ void PhoneBook::searchContact(void)
 		std::cout << std::endl;
 
 		// Setup a new request loop to ask which contact is to be shown in full
-		while (run)
+		while (true)
 		{
-			// Reset variable each loop
 			correct_format = true;
 
 			// After displaying the data we request which specific user we need to display
@@ -80,7 +73,6 @@ void PhoneBook::searchContact(void)
 				std::cout << "Invalid value (must be a digit)" << std::endl;
 			}
 
-			// If format of input is correct check for the value
 			if (correct_format == true)
 			{
 				if (selected_contact_id > 8 || selected_contact_id < 1 || selected_contact_id > this->amount)
@@ -88,10 +80,9 @@ void PhoneBook::searchContact(void)
 				else
 				{
 					this->contacts[selected_contact_id - 1].displayAllData();
-					run = false;
+					break;
 				}
 			}
 		}
 	}
-	return;
 }

@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 19:41:22 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 18:14:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/07/25 11:56:04 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ class Contact
 		~Contact(void);
 		void	displayAllData(void);
 		void	displayCompactData(void);
-		bool	setInformation(void);
+		bool	setInformation(uint32_t index);
+		void	setIndex(uint32_t index);
 };
 
 #endif
