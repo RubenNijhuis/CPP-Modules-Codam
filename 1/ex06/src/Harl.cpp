@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 14:02:53 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/07/26 14:08:48 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,37 @@ Harl::~Harl() { }
 
 void	Harl::debug(void)
 {
-	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
+	std::cout << "[ DEBUG ]" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger" << std::endl;
+	std::cout << "I really do!" << std::endl;
+
+	std::cout << std::endl;
 }
 
 void	Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << "[ INFO ]" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money." << std::endl;
+	std::cout << "You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!" << std::endl;
+
+	std::cout << std::endl;
 }
 
 void	Harl::warning(void)
 {
-	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	std::cout << "[ WARNING ]" << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free." << std::endl;
+	std::cout << "I’ve been coming for years whereas you started working here since last month." << std::endl;
+
+	std::cout << std::endl;
 }
 
 void	Harl::error(void)
 {
+	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+
+	std::cout << std::endl;
 }
 
 int32_t	Harl::getComplainmentLevel(std::string level)
@@ -65,13 +80,15 @@ void	Harl::complain(std::string level)
 		return ;
 	}
 	
-	void(Harl::*complaint[])(void) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error,
-	};
-
-	void (Harl::*selectedComplaint)( void ) = complaint[i];
-	(this->*selectedComplaint)();
+	switch (this->_level)
+	{
+		case 0:
+			Harl::debug();
+		case 1:
+			Harl::info();
+		case 2:
+			Harl::warning();
+		case 3:
+			Harl::error();
+	}
 }

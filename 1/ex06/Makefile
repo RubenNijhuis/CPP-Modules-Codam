@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/24 20:30:56 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/07/26 14:10:22 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	HarlFilter
+EXEC_NAME	=	harlFilter
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
@@ -25,7 +25,8 @@ OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
 INC			=	-I $(INCLUDE_DIR)
 
-SRCS		=	main.cpp
+SRCS		=	main.cpp \
+				Harl.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
@@ -48,7 +49,7 @@ run: $(NAME)
 $(NAME):$(OBJS)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
-	@echo "Finished creating: $@"
+	@echo "Finished creating: $(EXEC_NAME)"
 
 clean:
 	@rm -rf $(OBJS_DIR)
