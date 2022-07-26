@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/02 18:10:56 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/07/26 17:42:14 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 
 int32_t	main(void)
 {
-	Zombie*	zombies = zombieHorde(5, "Ruben");
+	uint32_t amount_zombies = 5;
+	Zombie*	zombies = zombieHorde(amount_zombies, "Ruben");
 
-	for (int i = 0; i < 7; i++)
+	for (uint32_t i = 0; i < amount_zombies; i++)
+	{
 		zombies[i].announce();
+	}
 
 	delete[] zombies;
 

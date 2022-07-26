@@ -6,14 +6,14 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/02 17:38:35 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/07/26 17:26:58 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-# include <string>
+#include <string>
 
 class Zombie
 {
@@ -26,8 +26,5 @@ class Zombie
 		
 		void	announce(void);
 };
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 
 #endif

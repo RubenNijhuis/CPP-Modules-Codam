@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/24 20:26:30 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/07/26 17:39:34 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,8 @@ OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 INC			=	-I $(INCLUDE_DIR)
 
 SRCS		=	main.cpp \
-				newZombie.cpp \
-				randomChump.cpp \
 				Zombie.cpp \
-				ombieHorde.cpp
+				zombieHorde.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 

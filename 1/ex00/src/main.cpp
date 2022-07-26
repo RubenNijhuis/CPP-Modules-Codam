@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/02 18:07:44 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/07/26 15:10:38 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 #include <cstdlib>
 #include <iostream>
+
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 int32_t	main(void)
 {
