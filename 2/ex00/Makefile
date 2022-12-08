@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/24 20:25:40 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/07/26 23:09:31 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,24 +17,22 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	CrappyPhonebook
+EXEC_NAME	=	Fixed
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
 #======== SRCS =========#
 
-INC			=	-I src/Contact \
-				-I src/PhoneBook
+INC			=	-I $(INCLUDE_DIR)
 
 SRCS		=	main.cpp \
-				PhoneBook/PhoneBook.cpp \
-				Contact/Contact.cpp
+				Fixed.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
 #== Compilation stuff ==#
 
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98$(INC)
+CFLAGS		=	-Wall -Wextra -Werror $(INC)
 
 #======= Rules =========#
 
@@ -51,7 +49,7 @@ run: $(NAME)
 $(NAME):$(OBJS)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(OUTPUT)
-	@echo "Finished building: $@"
+	@echo "Finished creating: $@"
 
 clean:
 	@rm -rf $(OBJS_DIR)

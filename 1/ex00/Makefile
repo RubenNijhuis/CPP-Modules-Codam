@@ -16,14 +16,14 @@ CC			=	g++
 SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
-INCLUDE_DIR	=	include
+INC_DIR		=	include
 EXEC_NAME	=	Zombie
-NAME		=	$(BIN_DIR)/$(EXEC_NAME)
+NAME			=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
 #======== SRCS =========#
 
-INC			=	-I $(INCLUDE_DIR)
+INC			=	-I $(INC_DIR)
 
 SRCS		=	main.cpp \
 				newZombie.cpp \

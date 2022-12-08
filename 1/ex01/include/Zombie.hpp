@@ -28,6 +28,6 @@ class Zombie
 		void	announce(void);
 };
 
-Zombie* zombieHorde( int N, std::string name );
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

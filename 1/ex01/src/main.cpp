@@ -20,7 +20,7 @@ int32_t	main(void)
 	uint32_t amount_zombies = 5;
 	Zombie*	zombies = zombieHorde(amount_zombies, "Ruben");
 
-	for (uint32_t i = 0; i < amount_zombies; i++)
+	for (size_t i = 0; i < amount_zombies; i++)
 	{
 		zombies[i].announce();
 	}

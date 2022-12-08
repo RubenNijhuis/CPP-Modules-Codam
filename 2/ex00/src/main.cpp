@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   zombieHorde.cpp                                    :+:    :+:            */
+/*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/02 18:09:33 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 17:36:44 by rnijhuis      ########   odam.nl         */
+/*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2022/07/26 23:52:21 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-Zombie*	zombieHorde(int N, std::string name)
+#include <cstdlib>
+#include <iostream>
+
+int32_t	main(void)
 {
-	Zombie *horde = new Zombie[N];
+	Fixed a; // default
+	Fixed b(a); // copy
+	Fixed c; // default
 
-	for (int i = 0; i < N; i++) {
-		horde[i].setName(name);
-	}
+	c = b; // asign
 	
-	return (horde);
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return (0);
 }
