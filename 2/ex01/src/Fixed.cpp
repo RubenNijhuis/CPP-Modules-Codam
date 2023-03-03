@@ -6,11 +6,12 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:16:44 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 17:22:17 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/03 18:55:28 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <
 #include "Fixed.hpp"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +47,7 @@ Fixed::Fixed(Fixed const& other)
 	*this = other;
 }
 
-Fixed &Fixed::operator=( Fixed const & obj )
+Fixed& Fixed::operator=( Fixed const & obj )
 {
 	std::cout << "Fixed assignment operator called" << std::endl;
 	if (this != &obj)
