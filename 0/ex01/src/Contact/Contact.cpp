@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/25 11:57:00 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ Contact::Contact(void) : index(0) { }
 
 Contact::~Contact(void) { }
 
-void	Contact::setIndex(uint32_t index)
+void	Contact::setIndex(uint index)
 {
 	this->index = index;
 }
 
-bool	Contact::setInformation(uint32_t index)
+bool	Contact::setInformation(uint index)
 {
 	this->index = index;
-	for (uint32_t i = FirstName; i <= Secret; i++)
+	for (uint i = FirstName; i <= Secret; i++)
 	{
 		std::cout << "# " << Contact::fields_name[i] << ":\n+ ";
 		std::getline(std::cin, this->information[i]);
@@ -54,7 +54,7 @@ void Contact::displayCompactData(void)
 	std::cout << this->index;
 	std::cout << "|";
 
-	for (uint32_t i = FirstName; i <= Nickname; i++)
+	for (uint i = FirstName; i <= Nickname; i++)
 	{
 		if (this->information[i].length() > 9)
 		{
@@ -74,7 +74,7 @@ void Contact::displayCompactData(void)
 
 void Contact::displayAllData(void)
 {
-	for (uint32_t i = FirstName; i <= Secret; i++)
+	for (uint i = FirstName; i <= Secret; i++)
 	{
 		std::cout << "# " << this->information[i] << std::endl;
 	}

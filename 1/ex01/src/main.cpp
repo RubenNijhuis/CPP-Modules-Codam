@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 17:42:14 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <cstdlib>
 #include <iostream>
 
-int32_t	main(void)
+int	main(void)
 {
-	uint32_t amount_zombies = 5;
+	uint amount_zombies = 5;
 	Zombie*	zombies = zombieHorde(amount_zombies, "Ruben");
 
 	for (size_t i = 0; i < amount_zombies; i++)

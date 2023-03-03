@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 15:10:38 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 Zombie	*newZombie(std::string name);
 void	randomChump(std::string name);
 
-int32_t	main(void)
+int	main(void)
 {
 	std::cout << "This is one way to create a zombie:" << std::endl;
 	Zombie zombie("Jan");

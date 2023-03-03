@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/24 20:27:06 by rubennijhui   ########   odam.nl          #
+#    Updated: 2023/03/03 16:57:57 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
 #== Compilation stuff ==#
 
-CFLAGS		=	-Wall -Wextra -Werror $(INC)
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 $(INC)
 
 #======= Rules =========#
 

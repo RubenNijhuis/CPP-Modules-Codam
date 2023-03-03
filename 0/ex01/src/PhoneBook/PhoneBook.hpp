@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:26:26 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/25 11:55:45 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class PhoneBook
 {
 	private:
 		Contact		contacts[8];
-		uint32_t	amount;
+		uint	amount;
 
 	public:
 		PhoneBook(void);

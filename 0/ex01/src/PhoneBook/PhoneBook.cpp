@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 17:28:37 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/25 11:56:12 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void PhoneBook::addContact(void)
 	// If the list is full we need to shift all the contacts
 	if (this->amount == 8)
 	{
-		for (uint32_t i = 0; i < 7; i++)
+		for (uint i = 0; i < 7; i++)
 		{
 			this->contacts[i] = this->contacts[i + 1];
 			this->contacts[i].setIndex(i + 1);
@@ -40,7 +40,7 @@ void PhoneBook::addContact(void)
 
 void PhoneBook::searchContact(void)
 {
-	uint32_t	selected_contact_id;
+	uint	selected_contact_id;
 	std::string selected_content_str;
 	bool		correct_format = true;
 
@@ -48,7 +48,7 @@ void PhoneBook::searchContact(void)
 	{
 		// Display all the contacts in the list
 		std::cout << "|  INDEX   |FIRSTNAME | LASTNAME | NICKNAME |" << std::endl;
-		for (uint32_t i = 0; i < this->amount; i++)
+		for (uint i = 0; i < this->amount; i++)
 		{
 			this->contacts[i].displayCompactData();
 		}

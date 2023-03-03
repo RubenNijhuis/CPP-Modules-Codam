@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/24 21:22:35 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 22:44:18 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/02 13:04:16 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Sed
 
 		bool	check_files(std::string filename);
 		void	replace(void);
-		void	output(void);
+		void	output_to_file(void);
 };
 
 #endif

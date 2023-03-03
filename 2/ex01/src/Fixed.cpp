@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:16:44 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 15:49:05 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/03 17:22:17 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,20 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Fixed default constructor called" << std::endl;
+	std::cout << "Fixed empty constructor called" << std::endl;
 	this->_fixedPointValue = 0;
+}
+
+Fixed::Fixed(const float value)
+{
+	std::cout << "Fixed float constructor called" << std::endl;
+	this->_fixedPointValue = 8;
+}
+
+Fixed::Fixed(const int value)
+{
+	std::cout << "Fixed int constructor called" << std::endl;
+	this->_fixedPointValue = 8;
 }
 
 Fixed::~Fixed(void)
@@ -44,12 +56,22 @@ Fixed &Fixed::operator=( Fixed const & obj )
 
 ////////////////////////////////////////////////////////////////////////////////
 
-int	Fixed::getRawBits(void) const
+int Fixed::getRawBits(void) const
 {
 	return (this->_fixedPointValue);
 }
 
-void	Fixed::setRawBits(const int rawBits)
+void Fixed::setRawBits(const int rawBits)
 {
 	this->_fixedPointValue = rawBits;
+}
+
+float Fixed::toFloat() const
+{
+	
+}
+
+int Fixed::toInt() const
+{
+	
 }

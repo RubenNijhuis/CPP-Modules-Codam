@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/11 10:33:08 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/05/11 10:33:28 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:15:52 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class HumanA
 	public:
 		HumanA ( std::string name, Weapon &weapon );
 		~HumanA ( void );
+		void	attack(void);
 
-	void	attack(void);
 };
 
 #endif

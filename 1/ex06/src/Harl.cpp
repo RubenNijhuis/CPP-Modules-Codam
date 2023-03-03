@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 14:08:48 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void Harl::error(void)
   std::cout << std::endl;
 }
 
-int32_t Harl::getComplainmentLevel(std::string level)
+int Harl::getComplainmentLevel(std::string level)
 {
   std::string levels[] = {
       "DEBUG",
@@ -61,7 +61,7 @@ int32_t Harl::getComplainmentLevel(std::string level)
       "WARNING",
       "ERROR"};
 
-  for (uint32_t i = 0; i < levels->length(); i++)
+  for (uint i = 0; i < levels->length(); i++)
   {
     if (level == levels[i])
       return (i);

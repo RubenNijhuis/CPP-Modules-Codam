@@ -6,14 +6,14 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 21:34:55 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/25 10:29:15 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PhoneBook.hpp"
 
-int32_t	main(void)
+int	main(void)
 {
 	PhoneBook	phonebook;
 	std::string	command;

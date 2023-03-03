@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/11 10:33:08 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2022/07/26 13:52:52 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 class Harl
 {
 	private:
-		int32_t	_level;
+		int	_level;
 
-		int32_t	getComplainmentLevel(std::string level);
+		int	getComplainmentLevel(std::string level);
 		void		debug(void);
 		void		info(void);
 		void		warning(void);

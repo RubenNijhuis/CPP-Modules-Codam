@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Harl.hpp                                           :+:    :+:            */
+/*   Fixed.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/11 10:33:08 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
+/*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2023/03/03 17:20:55 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-# include <string>
-
-class Harl
+class Fixed
 {
-	private:
-		int	_level;
-
-		int	getComplainmentLevel(std::string level);
-		void		debug(void);
-		void		info(void);
-		void		warning(void);
-		void		error(void);
-
 	public:
-		Harl(void);
-		~Harl(void);
-		void		complain(std::string level);
+		Fixed(void);
+		Fixed(const float value);
+		Fixed(const int value);
+		Fixed(const Fixed& other);
+		~Fixed(void);
+
+		Fixed	&operator=(const Fixed& other);
+
+		int		getRawBits(void) const;
+		void	setRawBits(const int rawBits);
+
+		float	toFloat() const;
+		int		toInt() const;
+
+	private:
+		int					_fixedPointValue;
+		static const int	_numFractBits = 8;
+
 };
 
 #endif

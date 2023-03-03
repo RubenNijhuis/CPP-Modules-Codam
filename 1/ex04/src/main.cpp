@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/24 22:44:38 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/24 22:44:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/02 13:04:23 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "Sed.hpp"
 
-bool	check_inputs(int32_t argc, char *argv[])
+bool	check_inputs(int argc, char *argv[])
 {
 	if (argc != 4)
 	{
@@ -31,7 +31,7 @@ bool	check_inputs(int32_t argc, char *argv[])
 	return (true);
 }
 
-int32_t	main(int32_t argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	if (check_inputs(argc, argv) == false)
 		return (1);
@@ -45,7 +45,7 @@ int32_t	main(int32_t argc, char *argv[])
 	
 	// Action
 	sed.replace();
-	sed.output();
+	sed.output_to_file();
 
 	return (0);
 }

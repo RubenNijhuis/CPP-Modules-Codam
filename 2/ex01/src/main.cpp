@@ -6,25 +6,32 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/03 17:05:56 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Fixed.hpp"
 
+#include <cstdlib>
 #include <iostream>
 
-int main(int argc, char *argv[])
+int	main(void)
 {
-  Harl harl;
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-  if (argc != 2)
-  {
-    std::cout << "Error: you did not enter the right amount of arguments" << std::endl;
-    return (1);
-  }
+	a = Fixed( 1234.4321f );
 
-  harl.complain(argv[1]);
-
-  return (0);
+	// std::cout << "a is " << a << std::endl;
+	// std::cout << "b is " << b << std::endl;
+	// std::cout << "c is " << c << std::endl;
+	// std::cout << "d is " << d << std::endl;
+	
+	// std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	// std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	// std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	// std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	return 0;
 }

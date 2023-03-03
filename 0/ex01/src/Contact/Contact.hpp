@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/12 19:41:22 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/25 11:56:04 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/02 13:03:32 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Contact
 {
 	private:
-		uint32_t			index;
+		uint			index;
 		static std::string	fields_name[5];
 		std::string			information[5];
 
@@ -33,8 +33,8 @@ class Contact
 		~Contact(void);
 		void	displayAllData(void);
 		void	displayCompactData(void);
-		bool	setInformation(uint32_t index);
-		void	setIndex(uint32_t index);
+		bool	setInformation(uint index);
+		void	setIndex(uint index);
 };
 
 #endif
