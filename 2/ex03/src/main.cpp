@@ -9,9 +9,15 @@ int	main(void)
     Point triangleB = Point(10.0f, 30.0f);
     Point triangleC = Point(20.0f, 0.0f);
 
-    Point point = Point(10.0f, 15.0f);
+    Point point = Point(100.0f, 150.0f);
 
-    if (bsp(triangleA, triangleB, triangleC, point)) {
+    std::cout << "Is the point in the triangle? ";
+    if (bsp(triangleA, triangleB, triangleC, point))
+    {
         std::cout << "Yes" << std::endl;
+    }
+    else
+    {
+        std::cout << "No" << std::endl;
     }
 }

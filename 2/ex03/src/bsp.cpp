@@ -26,5 +26,5 @@ bool bsp(const Point a, const Point b, const Point c, const Point point)
                     b.getXPos(), b.getYPos(),
                     point.getXPos(), point.getYPos());
 
-  return (totalArea > 0 ? true : false);
+  return (totalArea == (a1 + a2 + a3) ? true : false);
 }
