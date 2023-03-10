@@ -29,7 +29,7 @@ class ClapTrap
 
         void attack(const std::string &target);
         void takeDamage(uint32_t amount);
-        void takeDamage(uint32_t amount);
+        void beRepaired(uint32_t amount);
 
     private:
         uint32_t _hitPoints = 10;

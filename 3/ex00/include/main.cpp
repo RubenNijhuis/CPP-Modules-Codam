@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Fixed.hpp                                          :+:    :+:            */
+/*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 15:45:50 by rnijhuis      ########   odam.nl         */
+/*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2023/03/03 15:45:08 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include "Fixed.hpp"
 
-class Fixed
+#include <cstdlib>
+#include <iostream>
+
+int	main(void)
 {
-	public:
-		Fixed(void);
-		Fixed(const Fixed& other);
-		~Fixed(void);
+	Fixed a;    // default
+	Fixed b(a); // copy
+	Fixed c;    // default
 
-		Fixed	&operator=(const Fixed& other);
+	c = b;      // assign
+	
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 
-		int		getRawBits(void ) const;
-		void	setRawBits(const int rawBits);
-
-	private:
-		int					_fixedPointValue;
-		static const int	_numFractBits = 8;
-
-};
-
-#endif
+	return (0);
+}

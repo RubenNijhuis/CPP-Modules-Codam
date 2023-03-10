@@ -38,7 +38,8 @@ Point& Point::operator=(const Point& obj)
 	// std::cout << "Point assignment operator called" << std::endl;
 	if (this != &obj)
     {
-        *this = obj;
+        this->_x = obj._x;
+        this->_y = obj._y;
     }
     return *this;
 }
