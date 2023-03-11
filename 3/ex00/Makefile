@@ -17,7 +17,7 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	Fixed
+EXEC_NAME	=	ClapTrap
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
@@ -26,7 +26,7 @@ OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 INC			=	-I $(INCLUDE_DIR)
 
 SRCS		=	main.cpp \
-				Fixed.cpp
+				ClapTrap.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 

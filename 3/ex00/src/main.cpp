@@ -10,22 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
 
 #include <cstdlib>
 #include <iostream>
+#include <limits.h>
+
+bool willOverflow(uint32_t a, uint32_t b) {
+    bool overflow = (a + b <= a || a + b <= b);
+    bool underflow = (a < b);
+
+    return (overflow || underflow);
+}
 
 int	main(void)
 {
-	Fixed a;    // default
-	Fixed b(a); // copy
-	Fixed c;    // default
+    uint32_t main = 5;
+    uint32_t second = 4294960;
 
-	c = b;      // assign
-	
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+    if (willOverflow(main, second)) {
+        main = 0;
+    } else {
+        main -= second;
+    }
 
-	return (0);
+    std::cout << main << std::endl;
+    return (0);
 }

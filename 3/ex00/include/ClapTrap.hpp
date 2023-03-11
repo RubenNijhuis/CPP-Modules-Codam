@@ -32,9 +32,9 @@ class ClapTrap
         void beRepaired(uint32_t amount);
 
     private:
-        uint32_t _hitPoints = 10;
-        uint32_t _energyPoints = 10;
-        uint32_t _attackDamage = 0;
+        uint32_t _hitPoints;
+        uint32_t _energyPoints;
+        uint32_t _attackDamage;
 };
 
 #endif
