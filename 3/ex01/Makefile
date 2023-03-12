@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2023/03/03 16:57:57 by rnijhuis      ########   odam.nl          #
+#    Updated: 2023/03/12 11:08:44 by rubennijhui   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 INC			=	-I $(INCLUDE_DIR)
 
 SRCS		=	main.cpp \
-				ClapTrap.cpp
+				ClapTrap.cpp \
+				ScavTrap.cpp \
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
