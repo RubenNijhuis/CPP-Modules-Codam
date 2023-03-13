@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:16:44 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 18:55:28 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/12 15:08:47 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,29 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Fixed empty constructor called" << std::endl;
 	this->_fixedPointValue = 0;
+    
+	std::cout << "Fixed empty constructor called" << std::endl;
 }
+
+/**
+ * Using the rounding fix from https://www.youtube.com/watch?v=ZMsrZvBmQnU&t=400s
+ * to fix the "underestamating" of the fixed point notation we bias it by forcing
+ * it to round up at the end. Could've used the round function, honestly this seemed more reasonable
+ */
 
 Fixed::Fixed(const float value)
 {
-    int power = pow(2, this->_numFractBits);
+	// std::cout << "Fixed float constructor called" << std::endl;
+    int32_t scaledValue = value * float(1 << this->_numFractBits) + (value >= 0 ? 0.5 : -0.5);
 
-	this->_fixedPointValue = roundf(value * power);
-
-	std::cout << "Fixed float constructor called" << std::endl;
+	this->setRawBits(scaledValue);
 }
 
 Fixed::Fixed(const int value)
 {
-    this->_fixedPointValue = value << this->_numFractBits;
-
-	std::cout << "Fixed int constructor called" << std::endl;
+	// std::cout << "Fixed int constructor called" << std::endl;
+    this->setRawBits(value << this->_numFractBits);
 }
 
 Fixed::~Fixed(void)
@@ -47,15 +52,20 @@ Fixed::~Fixed(void)
 
 Fixed::Fixed(Fixed const& other)
 {
-	std::cout << "Fixed copy constructor called" << std::endl;
 	*this = other;
+
+	std::cout << "Fixed copy constructor called" << std::endl;
 }
 
 Fixed & Fixed::operator=(Fixed const & obj)
 {
-	std::cout << "Fixed assignment operator called" << std::endl;
 	if (this != &obj)
+    {
 		this->_fixedPointValue = obj._fixedPointValue;
+    }
+
+	std::cout << "Fixed assignment operator called" << std::endl;
+
 	return *this;
 }
 
@@ -79,10 +89,11 @@ void Fixed::setRawBits(const int rawBits)
 
 float Fixed::toFloat() const
 {
-    int		power = pow(2, this->_numFractBits);
-	float	result = (float)this->_fixedPointValue / power;
+    float result;
 
-	return (result);
+    result = this->getRawBits() / float(1 << this->_numFractBits);
+
+    return (result);
 }
 
 int Fixed::toInt() const

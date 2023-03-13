@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:16:44 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 18:55:28 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/13 17:48:33 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,32 +136,30 @@ Fixed Fixed::operator/(const Fixed& other) const
 
 ////////////////////////////////////////////////////////////////////////////////
 
-Fixed Fixed::operator++(void)
-{
-	this->_fixedPointValue++;
-	return (*this);
+Fixed &Fixed::operator++(void) {
+    ++this->_fixedPointValue;
+    return (*this);
 }
 
-Fixed	Fixed::operator++(int)
-{
-	Fixed	beforeIncrement(*this);
+Fixed Fixed::operator++(int) {
+    Fixed preValue = *this;
 
-	++(*this);
-	return (beforeIncrement);
+    this->_fixedPointValue++;
+
+    return (preValue);
 }
 
-Fixed	Fixed::operator--(void)
-{
-	this->_fixedPointValue--;
-	return (*this);
+Fixed &Fixed::operator--(void) {
+    --this->_fixedPointValue;
+    return (*this);
 }
 
-Fixed	Fixed::operator--(int)
-{
-	Fixed	beforeDecrement(*this);
+Fixed Fixed::operator--(int) {
+    Fixed preValue = *this;
 
-	--(*this);
-	return (beforeDecrement);
+    this->_fixedPointValue--;
+
+    return (preValue);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

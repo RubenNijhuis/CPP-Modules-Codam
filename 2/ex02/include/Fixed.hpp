@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 17:20:55 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/13 17:58:39 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ class Fixed
 		Fixed(const float value);
 		Fixed(const int value);
 		Fixed(const Fixed& other);
+
+		Fixed	&operator=(const Fixed& other);
+        
 		~Fixed(void);
 
         ////////////////////////////////////////////////////
-
-		Fixed	&operator=(const Fixed& other);
 
         bool	operator>(const Fixed& other) const;
         bool	operator<(const Fixed& other) const;
@@ -40,10 +41,10 @@ class Fixed
         Fixed	operator*(const Fixed& other) const;
         Fixed	operator/(const Fixed& other) const;
 
-        Fixed	operator++(void);
+        Fixed	&operator++(void);
         Fixed	operator++(int);
         
-        Fixed	operator--(void);
+        Fixed	&operator--(void);
         Fixed	operator--(int);
 
         ////////////////////////////////////////////////////

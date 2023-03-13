@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:16:44 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 15:49:05 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/12 15:08:07 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 Fixed::Fixed(void)
 {
 	std::cout << "Fixed default constructor called" << std::endl;
+
 	this->_fixedPointValue = 0;
 }
 
@@ -37,8 +38,12 @@ Fixed::Fixed(Fixed const& other)
 Fixed &Fixed::operator=( Fixed const & obj )
 {
 	std::cout << "Fixed assignment operator called" << std::endl;
+    
 	if (this != &obj)
+    {
 		this->_fixedPointValue = obj._fixedPointValue;
+    }
+
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/03 17:05:56 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/12 15:10:30 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 int	main(void)
 {
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
 
-	a = Fixed( 1234.4321f );
+	a = Fixed(1234.4321f);
 
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
