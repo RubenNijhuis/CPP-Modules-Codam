@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/11 22:45:32 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/16 11:19:31 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
         this->_energyPoints = other._energyPoints;
         this->_hitPoints = other._hitPoints;
     }
-
     return (*this);
 }
 
@@ -75,7 +74,7 @@ void ClapTrap::takeDamage(uint32_t amount)
         amountDamageTaken = this->_hitPoints;
         this->_hitPoints = 0;
     }
-    else 
+    else
     {
         amountDamageTaken = amount;
         this->_hitPoints -= amount;
