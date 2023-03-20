@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/18 19:48:31 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/20 14:35:02 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ ScavTrap::ScavTrap(void)
     std::cout << "ScavTrap empty contructor" << std::endl;
     
     this->setName("Scavver");
-    this->setHitPoints(100);
+    this->setHitPoints(10);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(std::string& name): ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
     std::cout << "ScavTrap constructor called with name" << std::endl;
 
     this->setName(name);
-    this->setHitPoints(100);
+    this->setHitPoints(10);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
 }

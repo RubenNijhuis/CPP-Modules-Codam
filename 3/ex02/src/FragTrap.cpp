@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ScavTrap.cpp                                       :+:    :+:            */
+/*   FragTrap.cpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/18 19:48:31 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/19 15:09:37 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 #include <string>
 #include <iostream>
@@ -19,43 +19,43 @@
 // Constuctors
 ////////////////////////////////////////////////////////////////////////////////
 
-ScavTrap::ScavTrap(void)
+FragTrap::FragTrap(void)
 {
-    std::cout << "ScavTrap empty contructor" << std::endl;
+    std::cout << "FragTrap empty contructor" << std::endl;
     
-    this->setName("Scavver");
+    this->setName("Fragger");
     this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
 }
 
-ScavTrap::ScavTrap(std::string& name): ClapTrap(name)
+FragTrap::FragTrap(std::string name)
 {
-    std::cout << "ScavTrap constructor called with name" << std::endl;
+    std::cout << "FragTrap constructor called with name" << std::endl;
 
     this->setName(name);
     this->setHitPoints(100);
-    this->setEnergyPoints(50);
-    this->setAttackDamage(20);
+    this->setEnergyPoints(100);
+    this->setAttackDamage(30);
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other)
+FragTrap::FragTrap(const FragTrap& other)
 {
-    std::cout << "ScavTrap created by copy" << std::endl;
+    std::cout << "FragTrap created by copy" << std::endl;
 
     *this = other;
     return;
 }
 
-ScavTrap::~ScavTrap(void)
+FragTrap::~FragTrap(void)
 {
-    std::cout << "ScavTrap deconstructed" << std::endl;
+    std::cout << "FragTrap deconstructed" << std::endl;
     return;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+FragTrap& FragTrap::operator=(const FragTrap& other)
 {
-    std::cout << "ScavTrap created by assertion" << std::endl;
+    std::cout << "FragTrap created by assertion" << std::endl;
     
     if (this != &other)
     {
@@ -69,22 +69,27 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void ScavTrap::attack(const std::string &target)
+void FragTrap::attack(const std::string &target)
 {
     if (this->getEnergyPoints() == 0)
     {
-        std::cout << "ScavTrap has no energy points left to attack :(" << std::endl;
+        std::cout << "FragTrap has no energy points left to attack :(" << std::endl;
         return;
     }
 
-    std::cout << "ScavTrap has mercilously attacked " << target << ", causing an astounding " << this->getAttackDamage() << " points of damage!" << std::endl;
+    std::cout << "FragTrap has mercilously attacked " << target << ", causing an astounding " << this->getAttackDamage() << " points of damage!" << std::endl;
     
     this->setEnergyPoints(this->getEnergyPoints() - 1);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void ScavTrap::guardGate(void)
+void FragTrap::guardGate(void)
 {
-    std::cout << "Scavtrap is now in Gate keeper mode" << std::endl;
+    std::cout << "FragTrap is now in Gate keeper mode" << std::endl;
+}
+
+void FragTrap::highFivesFuys(void)
+{
+    std::cout << "FragTrap would be jolly excited to receive a highfive from you!" << std::endl;
 }

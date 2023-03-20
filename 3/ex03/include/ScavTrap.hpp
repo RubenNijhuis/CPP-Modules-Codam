@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/18 19:48:27 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/20 16:12:42 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <stdint.h>
 # include <string>
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 	public:
 		ScavTrap(void);
 		ScavTrap(const ScavTrap& other);
-		ScavTrap(const std::string& name);
+		ScavTrap(const std::string name);
 		~ScavTrap(void);
 
 		ScavTrap &operator=(const ScavTrap& other);
@@ -34,8 +34,10 @@ class ScavTrap : public ClapTrap
 		void attack(const std::string& target);
 		void guardGate(void);
 
-	private:
-		std::string _name;
+    private:
+        uint32_t _hitPoints = 100;
+		uint32_t _energyPoints = 50;
+		uint32_t _attackDamage = 20;
 };
 
 #endif
