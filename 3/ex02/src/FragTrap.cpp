@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/19 15:09:37 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/23 17:24:46 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ FragTrap::FragTrap(void)
 {
     std::cout << "FragTrap empty contructor" << std::endl;
     
-    this->setName("Fragger");
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->_name = "Fragger";
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string name)
 {
     std::cout << "FragTrap constructor called with name" << std::endl;
 
-    this->setName(name);
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->_name = name;
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap& other)
@@ -59,9 +59,9 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
     
     if (this != &other)
     {
-        this->setAttackDamage(other.getAttackDamage());
-        this->setEnergyPoints(other.getEnergyPoints());
-        this->setHitPoints(other.getHitPoints());
+        this->_attackDamage = other._attackDamage;
+        this->_energyPoints = other._energyPoints;
+        this->_hitPoints = other._hitPoints;
     }
 
     return (*this);
@@ -71,25 +71,20 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 
 void FragTrap::attack(const std::string &target)
 {
-    if (this->getEnergyPoints() == 0)
+    if (this->_energyPoints == 0)
     {
-        std::cout << "FragTrap has no energy points left to attack :(" << std::endl;
+        std::cout << "FragTrap " << this->_name << " has no energy points left to attack :(" << std::endl;
         return;
     }
 
-    std::cout << "FragTrap has mercilously attacked " << target << ", causing an astounding " << this->getAttackDamage() << " points of damage!" << std::endl;
+    std::cout << "FragTrap has mercilously attacked " << target << ", causing an astounding " << this->_attackDamage << " points of damage!" << std::endl;
     
-    this->setEnergyPoints(this->getEnergyPoints() - 1);
+    this->_energyPoints = this->_energyPoints - 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void FragTrap::guardGate(void)
-{
-    std::cout << "FragTrap is now in Gate keeper mode" << std::endl;
-}
-
 void FragTrap::highFivesFuys(void)
 {
-    std::cout << "FragTrap would be jolly excited to receive a highfive from you!" << std::endl;
+    std::cout << "FragTrap " << this->_name << " would be jolly excited to receive a highfive from you!" << std::endl;
 }

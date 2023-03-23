@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/11 22:45:27 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/23 17:09:49 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,18 @@
 
 int	main(void)
 {
-    ClapTrap clappy;
+    ClapTrap clappert("clappert");
 
-    clappy.attack("Ruben");     // 1
-    clappy.beRepaired(2);       // 2
-    clappy.attack("Ruben");     // 3
-    clappy.beRepaired(2);       // 4
-    clappy.beRepaired(4);       // 5
-    clappy.attack("Stephan");   // 6
-    clappy.attack("Stephan");   // 7
-    clappy.attack("Stephan");   // 8
-    clappy.attack("Stephan");   // 9
-    clappy.attack("Stephan");   // 10
+    for (int i = 0; i < 10; i++)
+    {
+        clappert.attack("Bad guy");
+        clappert.takeDamage(10);
+    }
 
-    // No energy left so this should tell us that there are no energy points left
-    clappy.attack("Stephan");
+    std::cout << std::endl;
+    
+    clappert.beRepaired(10);
+    clappert.attack("someone else");
 
     return (0);
 }

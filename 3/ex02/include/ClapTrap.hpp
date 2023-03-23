@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/16 11:21:42 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/03/23 16:56:31 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,7 @@ class ClapTrap
 		void takeDamage(uint32_t amount);
 		void beRepaired(uint32_t amount);
 
-		////////////////////////////////////////////////////////////////////////
-
-		void setName(const std::string name);
-		std::string getName() const;
-
-		void setHitPoints(uint32_t amount);
-		uint32_t getHitPoints(void) const;
-
-		void setEnergyPoints(uint32_t amount);
-		uint32_t getEnergyPoints(void) const;
-
-		void setAttackDamage(uint32_t amount);
-		uint32_t getAttackDamage(void) const;
-
-	private:
+	protected:
 		std::string _name;
 		uint32_t _hitPoints;
 		uint32_t _energyPoints;

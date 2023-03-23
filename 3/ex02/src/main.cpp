@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/19 19:09:06 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/23 17:24:53 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
 int	main(void)
 {
-    FragTrap flaggy("flaggy");
-    ScavTrap scavvy("scavvy");
+    FragTrap fraggert("fraggert");
 
-    scavvy.attack("Ruben");     // 1
-    scavvy.beRepaired(2);       // 2
-    scavvy.attack("Ruben");     // 3
-    scavvy.beRepaired(2);       // 4
-    scavvy.beRepaired(4);       // 5
-    scavvy.attack("Stephan");   // 6
-    scavvy.attack("Stephan");   // 7
-    scavvy.attack("Stephan");   // 8
-    scavvy.attack("Stephan");   // 9
-    scavvy.attack("Stephan");   // 10
+    for (int i = 0; i < 10; i++)
+    {
+        fraggert.attack("Bad guy");
+        fraggert.takeDamage(10);
+    }
 
-    // No energy left so this should tell us that there are no energy points left
-    scavvy.attack("Stephan");
-    scavvy.guardGate();
-    flaggy.highFivesFuys();
+    std::cout << std::endl;
+    
+    fraggert.beRepaired(10);
+    fraggert.attack("someone else");
+
+
 
     return (0);
 }

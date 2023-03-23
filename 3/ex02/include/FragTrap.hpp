@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/19 16:33:24 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/23 17:24:20 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ class FragTrap : public ClapTrap
 		////////////////////////////////////////////////////////////////////////
 
 		void attack(const std::string& target);
-		void guardGate(void);
-        void highFivesFuys(void);
-
-    private:
-		std::string _name;
+		void highFivesFuys(void);
 };
 
 #endif
