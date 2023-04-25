@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   WrongAnimal.hpp                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:44 by rubennijhui   ########   odam.nl         */
+/*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2023/04/17 18:58:18 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <string>
-# include "Animal.hpp"
 
-class Cat : public Animal
+class WrongAnimal
 {
 	public:
-		Cat(void);
-		Cat(const Cat& other);
-		~Cat(void);
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal& other);
+		WrongAnimal(const std::string& type);
+		~WrongAnimal(void);
 
-		Cat &operator=(const Cat& other);
+		WrongAnimal &operator=(const WrongAnimal& other);
 
 		////////////////////////////////////////////////////////////////////////
-		
+
+		std::string getType() const;
 		void makeSound() const;
+
+	protected:
+		std::string _type;
 };
 
 #endif

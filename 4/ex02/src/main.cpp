@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/18 21:58:54 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/04/24 21:39:24 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,22 @@
 #include "Cat.hpp"
 #include "Animal.hpp"
 
-#include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
-
-int main()
+int main(void)
 {
-	const WrongAnimal* meta = new WrongAnimal();
+	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
-	const WrongAnimal* i = new WrongCat();
+	const Animal* i = new Cat();
+
 	std::cout << i->getType() << std::endl;
 	i->makeSound(); // Will output the cat sound!
+
 	std::cout << j->getType() << std::endl;
 	j->makeSound(); // Will output the dog sound!
+
 	meta->makeSound();
-	return 0;
+
+    delete j;
+    delete i;
+    
+    return (0);
 }

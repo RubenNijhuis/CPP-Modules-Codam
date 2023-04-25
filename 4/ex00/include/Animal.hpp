@@ -6,14 +6,13 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/24 15:24:32 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/04/17 18:29:13 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-# include <stdint.h>
 # include <string>
 
 class Animal
@@ -27,6 +26,9 @@ class Animal
 		Animal &operator=(const Animal& other);
 
 		////////////////////////////////////////////////////////////////////////
+
+		std::string getType() const;
+		virtual void makeSound() const;
 
 	protected:
 		std::string _type;

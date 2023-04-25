@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/24 15:41:49 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/04/17 18:29:32 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ class Dog : public Animal
 {
 	public:
 		Dog(void);
-		Dog(const Dog& other);
-		Dog(const std::string& type);
+		Dog(const Dog &other);
 		~Dog(void);
 
 		Dog &operator=(const Dog& other);
+
+		///////////////////////////////////////////////////////////////////////
+
+		void makeSound() const;
 };
 
 #endif

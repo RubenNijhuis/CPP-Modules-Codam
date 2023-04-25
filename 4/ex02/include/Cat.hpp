@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:44 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/04/24 21:31:00 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CAT_HPP
 
 # include <string>
+
+# include "Brain.hpp"
 # include "Animal.hpp"
 
 class Cat : public Animal
@@ -28,6 +30,9 @@ class Cat : public Animal
 		////////////////////////////////////////////////////////////////////////
 		
 		void makeSound() const;
+
+	private:
+		Brain* brain;
 };
 
 #endif

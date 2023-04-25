@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   WrongCat.cpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 15:29:44 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:48 by rubennijhui   ########   odam.nl         */
+/*   Created: 2023/04/17 18:59:26 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2023/04/17 18:59:27 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-Cat::Cat(void)
+WrongCat::WrongCat(void)
 {
-    std::cout << "Cat created with an empty construcor" << std::endl;
+    std::cout << "WrongCat created with an empty construcor" << std::endl;
 
-    this->_type = "Cat";
+    this->_type = "WrongCat";
 
     return;
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat(void)
 {
-    std::cout << "Cat " << this->_type << " deconstructed" << std::endl;
+    std::cout << "WrongCat " << this->_type << " deconstructed" << std::endl;
     return;
 }
 
-Cat::Cat(const Cat& other)
+WrongCat::WrongCat(const WrongCat& other)
 {
-    std::cout << "Cat created by copy" << std::endl;
+    std::cout << "WrongCat created by copy" << std::endl;
     *this = other;
     return;
 }
 
-Cat& Cat::operator=(const Cat& other)
+WrongCat& WrongCat::operator=(const WrongCat& other)
 {
-    std::cout << "Cat created by assertion" << std::endl;
+    std::cout << "WrongCat created by assertion" << std::endl;
 
     if (this != &other)
     {
@@ -49,7 +49,7 @@ Cat& Cat::operator=(const Cat& other)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void Cat::makeSound() const
+void WrongCat::makeSound() const
 {
     std::cout << "Miauw" << std::endl;
 }

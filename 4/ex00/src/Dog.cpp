@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/24 15:27:48 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/04/17 18:29:52 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,6 @@ Dog::Dog(void)
     std::cout << "Dog created with an empty construcor" << std::endl;
 
     this->_type = "Dog";
-
-    return;
-}
-
-Dog::Dog(const std::string& type)
-{
-    std::cout << "Dog created with a type construcor" << std::endl;
-
-    this->_type = type;
 
     return;
 }
@@ -55,4 +46,11 @@ Dog& Dog::operator=(const Dog& other)
     }
 
     return (*this);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+void Dog::makeSound() const
+{
+    std::cout << "Woof" << std::endl;
 }

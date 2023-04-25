@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   WrongWRONGCAT.hpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:44 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/04/17 18:57:41 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 # include <string>
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
-		Cat(void);
-		Cat(const Cat& other);
-		~Cat(void);
+		WrongCat(void);
+		WrongCat(const WrongCat& other);
+		~WrongCat(void);
 
-		Cat &operator=(const Cat& other);
+		WrongCat &operator=(const WrongCat& other);
 
 		////////////////////////////////////////////////////////////////////////
 		

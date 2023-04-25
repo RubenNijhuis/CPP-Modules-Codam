@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   Animal.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:44 by rubennijhui   ########   odam.nl         */
+/*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
+/*   Updated: 2023/04/24 21:36:47 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <string>
-# include "Animal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Animal
 {
 	public:
-		Cat(void);
-		Cat(const Cat& other);
-		~Cat(void);
+		Animal(void);
+		Animal(const Animal& other);
+		Animal(const std::string& type);
+		virtual ~Animal(void);
 
-		Cat &operator=(const Cat& other);
+		Animal &operator=(const Animal& other);
 
 		////////////////////////////////////////////////////////////////////////
-		
-		void makeSound() const;
+
+		std::string getType() const;
+		virtual void makeSound() const;
+
+	protected:
+		Brain _brain;
+		std::string _type;
 };
 
 #endif

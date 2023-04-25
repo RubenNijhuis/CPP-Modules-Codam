@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   Brain.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:44 by rubennijhui   ########   odam.nl         */
+/*   Created: 2023/04/19 23:19:58 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2023/04/23 19:11:04 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-# include <string>
-# include "Animal.hpp"
+#include <string>
 
-class Cat : public Animal
+class Brain
 {
 	public:
-		Cat(void);
-		Cat(const Cat& other);
-		~Cat(void);
+		Brain(void);
+		Brain(const Brain& other);
+		~Brain(void);
 
-		Cat &operator=(const Cat& other);
+		Brain &operator=(const Brain& other);
 
-		////////////////////////////////////////////////////////////////////////
-		
-		void makeSound() const;
+	private:
+		std::string _ideas[100];
 };
 
 #endif

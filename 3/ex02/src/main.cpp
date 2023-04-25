@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/23 17:24:53 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/03/23 17:26:20 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
     }
 
     std::cout << std::endl;
-    
+
     fraggert.beRepaired(10);
     fraggert.attack("someone else");
 
