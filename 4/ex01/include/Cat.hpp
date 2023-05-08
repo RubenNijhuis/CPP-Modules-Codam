@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 15:29:15 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/24 21:31:00 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:30:32 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ class Cat : public Animal
 		////////////////////////////////////////////////////////////////////////
 		
 		void makeSound() const;
+		Brain *getBrain() const;
 
 	private:
-		Brain* brain;
+		Brain* _brain;
 };
 
 #endif

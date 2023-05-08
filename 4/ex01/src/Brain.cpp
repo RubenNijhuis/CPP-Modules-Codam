@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 23:19:48 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/24 21:31:51 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:52:05 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ Brain& Brain::operator=(const Brain& other)
 {
 	std::cout << "Brain created by assinging" << std::endl;
 
-	if (this == &other)
-	{
-		return (*this);
-	}
+	if (this == &other) return (*this);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -52,4 +49,25 @@ Brain& Brain::operator=(const Brain& other)
 	}
 
 	return (*this);
+}
+
+void Brain::setIdea(uint32_t index, std::string idea)
+{
+	if (index > 99)
+	{
+		std::cout << "\033[33mOnly 100 ideas can fit in the brain.\033[0m" << std::endl;
+		return;
+	}
+
+	this->_ideas[index] = idea;
+}
+
+std::string Brain::getIdea(uint32_t index)
+{
+	if (index <= 99)
+	{
+		return (this->_ideas[index]);
+	}
+
+	return ("\033[33mThere is only 100 ideas per brain.\033[0m");
 }

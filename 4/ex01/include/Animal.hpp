@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/24 21:36:47 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:18:03 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Animal
 		virtual void makeSound() const;
 
 	protected:
-		Brain _brain;
 		std::string _type;
 };
 

@@ -15,21 +15,21 @@
 
 Cat::Cat(void): Animal("Cat")
 {
-    std::cout << "Cat created with an empty construcor" << std::endl;
+	std::cout << "Cat created with an empty construcor" << std::endl;
 
-    this->brain = new Brain();
-    if (!this->brain)
-    {
-        std::cerr << "Failure to allocate Brain in Dog" << std::endl;
-        exit(1);
-    }
+	this->_brain = new Brain();
+	if (!this->_brain)
+	{
+		std::cerr << "Failure to allocate Brain in Dog" << std::endl;
+		exit(1);
+	}
 	return;
 }
 
 Cat::~Cat(void)
 {
 	std::cout << "Cat " << this->_type << " deconstructed" << std::endl;
-    delete this->brain;
+	delete this->_brain;
 	return;
 }
 
@@ -57,4 +57,9 @@ Cat& Cat::operator=(const Cat& other)
 void Cat::makeSound() const
 {
 	std::cout << "Miauw" << std::endl;
+}
+
+Brain* Cat::getBrain() const
+{
+	return (this->_brain);
 }

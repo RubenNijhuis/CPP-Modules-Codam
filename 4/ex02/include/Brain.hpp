@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 23:19:58 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/23 19:11:04 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:22:21 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Brain
 		~Brain(void);
 
 		Brain &operator=(const Brain& other);
+
+		void setIdea(uint32_t index, std::string idea);
+		std::string getIdea(uint32_t index);
 
 	private:
 		std::string _ideas[100];

@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/24 21:39:24 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:51:16 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,15 @@
 
 int main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	Dog *dog = new Dog();
 
-	std::cout << i->getType() << std::endl;
-	i->makeSound(); // Will output the cat sound!
+	dog->getBrain()->setIdea(0, "I'd like some food");
+	std::cout << dog->getBrain()->getIdea(0) << std::endl;
 
-	std::cout << j->getType() << std::endl;
-	j->makeSound(); // Will output the dog sound!
+	dog->getBrain()->setIdea(100, "This won't work");
+	std::cout << dog->getBrain()->getIdea(100) << std::endl;
 
-	meta->makeSound();
-
-    delete j;
-    delete i;
-    
-    return (0);
+	delete dog;
+	
+	return (0);
 }

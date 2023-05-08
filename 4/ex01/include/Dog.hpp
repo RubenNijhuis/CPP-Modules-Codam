@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/24 21:02:12 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:30:30 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ class Dog : public Animal
 		///////////////////////////////////////////////////////////////////////
 
 		void makeSound() const;
+		Brain *getBrain() const;
 
 	private:
-		Brain* brain;
+		Brain* _brain;
 };
 
 #endif
