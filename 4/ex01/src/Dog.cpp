@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/05/08 11:31:16 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 14:14:41 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Dog::Dog(void): Animal("Dog")
 {
-	std::cout << "Dog created with an empty construcor" << std::endl;
+	std::cout << "Dog created with an empty constructor" << std::endl;
 
 	this->_brain = new Brain();
 
@@ -39,6 +39,14 @@ Dog::Dog(const Dog& other)
 {
 	std::cout << "Dog created by copy" << std::endl;
 	*this = other;
+
+	this->_brain = new Brain(*other._brain);
+	if (!this->_brain)
+	{
+		std::cerr << "Failure to allocate Brain in Dog" << std::endl;
+		exit(1);
+	}
+	
 	return;
 }
 
@@ -49,6 +57,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		this->_type = other._type;
+		this->_brain = other._brain;
 	}
 
 	return (*this);

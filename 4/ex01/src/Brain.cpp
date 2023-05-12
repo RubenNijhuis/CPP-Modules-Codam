@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 23:19:48 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/05/08 11:52:05 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 14:15:28 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Brain::Brain(void)
 {
-	std::cout << "Brain created with an empty construcor" << std::endl;
+	std::cout << "Brain created with an empty constructor" << std::endl;
 	return;
 }
 
@@ -69,5 +69,5 @@ std::string Brain::getIdea(uint32_t index)
 		return (this->_ideas[index]);
 	}
 
-	return ("\033[33mThere is only 100 ideas per brain.\033[0m");
+	return ("\033[33mThere are only 100 ideas per brain.\033[0m");
 }
