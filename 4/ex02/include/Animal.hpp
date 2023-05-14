@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 13:10:27 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/05/08 12:19:01 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 14:13:44 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 class Animal
 {
 	public:
+		Animal(void);
+		Animal(const Animal& other);
+		Animal(const std::string& type);
 		virtual ~Animal(void);
 
 		Animal &operator=(const Animal& other);
@@ -26,12 +29,9 @@ class Animal
 		////////////////////////////////////////////////////////////////////////
 
 		std::string getType() const;
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 
 	protected:
-		Animal(void);
-		Animal(const Animal& other);
-		Animal(const std::string& type);
 		std::string _type;
 };
 

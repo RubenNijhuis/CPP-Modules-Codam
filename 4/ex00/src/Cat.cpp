@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 15:29:44 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 13:54:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Cat::Cat(void)
 {
-    std::cout << "Cat created with an empty construcor" << std::endl;
+    std::cout << "Cat created with an empty constructor" << std::endl;
 
     this->_type = "Cat";
 

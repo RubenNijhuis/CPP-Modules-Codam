@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/05/08 11:51:16 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 14:14:16 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int main(void)
 {
+	Animal* anim = new Animal("Dog");
 	Dog *dog = new Dog();
 
 	dog->getBrain()->setIdea(0, "I'd like some food");
@@ -28,6 +29,7 @@ int main(void)
 	std::cout << dog->getBrain()->getIdea(100) << std::endl;
 
 	delete dog;
+	delete anim;
 	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/17 18:29:52 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 13:54:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Dog::Dog(void)
 {
-    std::cout << "Dog created with an empty construcor" << std::endl;
+    std::cout << "Dog created with an empty constructor" << std::endl;
 
     this->_type = "Dog";
 

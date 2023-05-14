@@ -15,7 +15,7 @@
 
 Cat::Cat(void): Animal("Cat")
 {
-	std::cout << "Cat created with an empty construcor" << std::endl;
+	std::cout << "Cat created with an empty constructor" << std::endl;
 
 	this->_brain = new Brain();
 	if (!this->_brain)
@@ -37,6 +37,14 @@ Cat::Cat(const Cat& other)
 {
 	std::cout << "Cat created by copy" << std::endl;
 	*this = other;
+
+	this->_brain = new Brain(*other._brain);
+	if (!this->_brain)
+	{
+		std::cerr << "Failure to allocate Brain in Cat" << std::endl;
+		exit(1);
+	}
+
 	return;
 }
 
@@ -46,7 +54,8 @@ Cat& Cat::operator=(const Cat& other)
 
 	if (this != &other)
 	{
-	this->_type = other._type;
+		this->_type = other._type;
+		this->_brain = other._brain;
 	}
 
 	return (*this);

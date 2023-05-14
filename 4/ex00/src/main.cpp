@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/05/08 10:42:39 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 14:12:39 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int main()
 
 	std::cout << std::endl;
 	meta->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
 
 	return 0;
 }

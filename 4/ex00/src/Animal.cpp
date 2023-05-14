@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/04/17 18:30:03 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 13:54:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 Animal::Animal(void)
 {
-    std::cout << "Animal created with an empty construcor" << std::endl;
+    std::cout << "Animal created with an empty constructor" << std::endl;
     
     this->_type = "Animal";
 
@@ -26,7 +26,7 @@ Animal::Animal(void)
 
 Animal::Animal(const std::string& type)
 {
-    std::cout << "Animal created with a type construcor" << std::endl;
+    std::cout << "Animal created with a type constructor" << std::endl;
 
     this->_type = type;
 

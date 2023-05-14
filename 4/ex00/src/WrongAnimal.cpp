@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 18:58:28 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/05/08 10:41:31 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 13:54:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 WrongAnimal::WrongAnimal(void)
 {
-    std::cout << "WrongAnimal created with an empty construcor" << std::endl;
+    std::cout << "WrongAnimal created with an empty constructor" << std::endl;
     
     this->_type = "WrongAnimal";
 
@@ -26,7 +26,7 @@ WrongAnimal::WrongAnimal(void)
 
 WrongAnimal::WrongAnimal(const std::string& type)
 {
-    std::cout << "WrongAnimal created with a type construcor" << std::endl;
+    std::cout << "WrongAnimal created with a type constructor" << std::endl;
 
     this->_type = type;
 

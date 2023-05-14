@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 18:59:26 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/04/17 18:59:27 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2023/05/12 13:54:35 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 WrongCat::WrongCat(void)
 {
-    std::cout << "WrongCat created with an empty construcor" << std::endl;
+    std::cout << "WrongCat created with an empty constructor" << std::endl;
 
     this->_type = "WrongCat";
 
