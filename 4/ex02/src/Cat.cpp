@@ -55,7 +55,12 @@ Cat& Cat::operator=(const Cat& other)
 	if (this != &other)
 	{
 		this->_type = other._type;
-		this->_brain = other._brain;
+		this->_brain = new Brain(*other._brain);
+		if (!this->_brain)
+		{
+			std::cerr << "Failure to allocate Brain in Dog" << std::endl;
+			exit(1);
+		}
 	}
 
 	return (*this);

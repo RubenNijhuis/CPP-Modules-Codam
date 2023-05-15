@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/05/12 14:14:41 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:02:30 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		this->_type = other._type;
-		this->_brain = other._brain;
+		
+		this->_brain = new Brain(*other._brain);
+		if (!this->_brain)
+		{
+			std::cerr << "Failure to allocate Brain in Dog" << std::endl;
+			exit(1);
+		}
 	}
 
 	return (*this);
