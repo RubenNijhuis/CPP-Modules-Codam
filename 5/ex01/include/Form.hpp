@@ -14,9 +14,11 @@
 # define FORM_HPP
 
 #include <string>
-#include "Bureacrat.hpp"
+#include <stdexcept>
 
-class Bureaucrat {}
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -32,13 +34,27 @@ class Form
 
 		//////////////////////////////////////////////////////////////////////////////
 
-		void beSigned(Bureacrat &bureacrat)
+		std::string getName();
+		uint32_t	getSignGrade();
+		uint32_t	getExecuteGrade();
+		bool		getIsSigned();
+		void		beSigned(Bureaucrat &bureacrat);
+
+		class GradeTooLowException : public std::exception
+		{
+		public:
+			virtual const char *except() const throw();
+		};
+
 
 	private:
 		const std::string _name;
-		const uint32_t _executeGrade;
 		const uint32_t _signGrade;
+		const uint32_t _executeGrade;
 		bool _isSigned;
 };
+
+std::ostream& operator<<(std::ostream &ostr, Form &instance);
+
 
 #endif

@@ -32,6 +32,7 @@ INC_SRCS_PATHS	=	$(addprefix $(INCLUDE_DIR)/,$(INC_SRCS))
 
 SRCS		=	main.cpp \
 				Bureaucrat.cpp \
+				Form.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 

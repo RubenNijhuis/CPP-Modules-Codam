@@ -4,7 +4,7 @@
 
 Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
 {
-	std::cout << "Bureaucrat created with an empty construcor" << std::endl;
+	std::cout << "Bureaucrat created with an empty constructor" << std::endl;
 
 	return;
 }
@@ -103,6 +103,19 @@ void Bureaucrat::incrementGrade()
 void Bureaucrat::decrementGrade()
 {
 	this->setGrade(this->_grade++);
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << "Bureaucrat " << this->_name << " with a grade " << this->_grade << " succesfully signs " << form << std::endl;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << "Bureaucrat " << this->_name << " with a grade " << this->_grade << " cannot sign " << form << " because " << e.what() << std::endl;
+	}
 }
 
 // ---------------------- BureaucratException Functions ------------------------
