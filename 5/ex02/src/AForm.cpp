@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Form.cpp                                           :+:    :+:            */
+/*   AForm.cpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 10:53:53 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2024/02/06 14:30:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/02/06 16:16:40 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 #include <iostream>
 
-Form::Form(void)
+AForm::AForm(void)
 :
 	_name("default"),
 	_signGrade(150),
@@ -27,29 +27,7 @@ Form::Form(void)
 	return;
 }
 
-Form::Form(std::string name)
-:
-	_name(name),
-	_signGrade(150),
-	_executeGrade(150),
-	_isSigned(false)
-{
-	std::cout << "Form created with the name constructor" << std::endl;
-
-	return;
-}
-
-Form::Form(std::string name, uint32_t signGrade)
-:
-	_name(name),
-	_signGrade(signGrade),
-	_executeGrade(150),
-	_isSigned(false)
-{
-	std::cout << "Form created with the name and signGrade constructor" << std::endl;
-}
-
-Form::Form(std::string name, uint32_t signGrade, uint32_t executeGrade)
+AForm::AForm(std::string name, uint32_t signGrade, uint32_t executeGrade)
 :
 	_name(name),
 	_signGrade(signGrade),
@@ -59,14 +37,13 @@ Form::Form(std::string name, uint32_t signGrade, uint32_t executeGrade)
 	std::cout << "Form created with the name and signGrade and executeGrade constructor" << std::endl;
 }
 
-
-Form::~Form(void)
+AForm::~AForm(void)
 {
 	std::cout << "Form " << this->_name << " deconstructed" << std::endl;
 	return;
 }
 
-Form::Form(const Form &other)
+AForm::AForm(const AForm &other)
 : 
 	_name(other._name),
 	_signGrade(other._signGrade),
@@ -78,9 +55,9 @@ Form::Form(const Form &other)
 	return;
 }
 
-Form &Form::operator=(const Form &other)
+AForm &AForm::operator=(const AForm &other)
 {
-	std::cout << "Form created by assertion" << std::endl;
+	std::cout << "AForm created by assertion" << std::endl;
 
 	if (this != &other)
 	{
@@ -92,34 +69,38 @@ Form &Form::operator=(const Form &other)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-std::string Form::getName()
+std::string AForm::getName() const
 {
 	return (this->_name);
 }
 
-uint32_t Form::getSignGrade()
+uint32_t AForm::getSignGrade() const
 {
 	return (this->_signGrade);
 }
 
-uint32_t Form::getExecuteGrade()
+uint32_t AForm::getExecuteGrade() const
 {
 	return (this->_executeGrade);
 }
 
-bool Form::getIsSigned()
+bool AForm::getIsSigned() const
 {
 	return (this->_isSigned);
 }
 
-void Form::beSigned(Bureaucrat &bureacrat)
+void AForm::setSigned(bool isSigned)
+{
+	this->_isSigned = isSigned;
+}
+
+void AForm::beSigned(Bureaucrat const &bureacrat)
 {
 	uint32_t grade = bureacrat.getGrade();
 
 	if (grade > this->_signGrade)
 	{
-		throw Form::GradeTooLowException();
-		return;
+		throw AForm::GradeTooLowException();
 	}
 	
 	this->_isSigned = true;
@@ -127,14 +108,24 @@ void Form::beSigned(Bureaucrat &bureacrat)
 	std::cout << *this << " was just signed by the bureaucrat " << bureacrat.getName() << " with a grade " << bureacrat.getGrade() << std::endl;
 }
 
-const char* Form::GradeTooLowException::except() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
 
-std::ostream & operator<<(std::ostream &ostr, Form &instance)
+const char* AForm::GradeTooHighException::what() const throw()
 {
-	ostr << "Form " << instance.getName() << " having a grade to sign " << instance.getSignGrade() << " and a grade to execute "
+	return ("Grade too high");
+}
+
+const char* AForm::FormNotSigned::what() const throw()
+{
+	return ("Form is not signed");
+}
+
+std::ostream & operator<<(std::ostream &ostr, AForm &instance)
+{
+	ostr << "AForm " << instance.getName() << " having a grade to sign " << instance.getSignGrade() << " and a grade to execute "
 		<< instance.getExecuteGrade() << " with signed equal to " << instance.getIsSigned();
 	return (ostr);
 }

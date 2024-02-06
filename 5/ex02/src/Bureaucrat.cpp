@@ -85,12 +85,12 @@ void Bureaucrat::setGrade(uint32_t grade)
 	this->_grade = grade;
 }
 
-const std::string Bureaucrat::getName()
+const std::string Bureaucrat::getName() const
 {
 	return (this->_name);
 }
 
-uint32_t Bureaucrat::getGrade()
+uint32_t Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
@@ -105,14 +105,42 @@ void Bureaucrat::decrementGrade()
 	this->setGrade(this->_grade++);
 }
 
+void Bureaucrat::signForm(AForm &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << "Bureaucrat " << this->_name << " with a grade " << this->_grade << " succesfully signs " << form << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cout << "Bureaucrat " << this->_name << " with a grade " << this->_grade << " cannot sign " << form << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form){
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+		
+	}
+	catch (std::exception & e)
+	{
+		std::cout << this->_name << " couldn't execute " << form.getName() << " because "\
+		<< e.what() << std::endl;
+	}
+}
+
+
 // ---------------------- BureaucratException Functions ------------------------
 
-const char* Bureaucrat::GradeTooLowException::except() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Cannot get a grade > 150!");
 }
 
-const char* Bureaucrat::GradeTooHighException::except() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Cannot get a grade < 1!");
 };

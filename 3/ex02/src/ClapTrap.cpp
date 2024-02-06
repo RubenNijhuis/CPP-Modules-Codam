@@ -6,7 +6,7 @@
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2023/03/23 17:17:20 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/02/06 14:30:48 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-    std::cout << "ClapTrap created with an empty construcor" << std::endl;
+    std::cout << "ClapTrap created with an empty constructor" << std::endl;
 
     this->_hitPoints = 10;
     this->_energyPoints = 10;
@@ -28,7 +28,7 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(const std::string& name)
 {
-    std::cout << "ClapTrap created with a name construcor" << std::endl;
+    std::cout << "ClapTrap created with a name constructor" << std::endl;
 
     this->_hitPoints = 10;
     this->_energyPoints = 10;
