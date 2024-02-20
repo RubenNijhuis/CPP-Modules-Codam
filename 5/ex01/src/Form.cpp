@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 10:53:53 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2024/02/06 14:30:48 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/02/07 15:11:16 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,24 @@ Form::Form(void)
 	return;
 }
 
-Form::Form(std::string name)
-:
-	_name(name),
-	_signGrade(150),
-	_executeGrade(150),
-	_isSigned(false)
-{
-	std::cout << "Form created with the name constructor" << std::endl;
-
-	return;
-}
-
-Form::Form(std::string name, uint32_t signGrade)
-:
-	_name(name),
-	_signGrade(signGrade),
-	_executeGrade(150),
-	_isSigned(false)
-{
-	std::cout << "Form created with the name and signGrade constructor" << std::endl;
-}
-
-Form::Form(std::string name, uint32_t signGrade, uint32_t executeGrade)
+Form::Form(std::string name, const uint32_t signGrade, const uint32_t executeGrade)
 :
 	_name(name),
 	_signGrade(signGrade),
 	_executeGrade(executeGrade),
 	_isSigned(false)
 {
-	std::cout << "Form created with the name and signGrade and executeGrade constructor" << std::endl;
-}
+	if (signGrade > 150 || executeGrade > 150)
+	{
+		throw Form::GradeTooHighException();
+	}
+	else if (signGrade > 150 || executeGrade > 150)
+	{
+		throw Form::GradeTooLowException();
+	}
 
+	std::cout << "Form created with the name and sign and execute grade constructor" << std::endl;
+}
 
 Form::~Form(void)
 {
@@ -92,49 +78,55 @@ Form &Form::operator=(const Form &other)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-std::string Form::getName()
+std::string Form::getName() const
 {
 	return (this->_name);
 }
 
-uint32_t Form::getSignGrade()
+uint32_t Form::getSignGrade() const
 {
 	return (this->_signGrade);
 }
 
-uint32_t Form::getExecuteGrade()
+uint32_t Form::getExecuteGrade() const
 {
 	return (this->_executeGrade);
 }
 
-bool Form::getIsSigned()
+bool Form::getIsSigned() const
 {
 	return (this->_isSigned);
 }
 
-void Form::beSigned(Bureaucrat &bureacrat)
+void Form::beSigned(Bureaucrat &bureaucrat)
 {
-	uint32_t grade = bureacrat.getGrade();
+	uint32_t grade = bureaucrat.getGrade();
 
 	if (grade > this->_signGrade)
 	{
 		throw Form::GradeTooLowException();
-		return;
 	}
 	
 	this->_isSigned = true;
 
-	std::cout << *this << " was just signed by the bureaucrat " << bureacrat.getName() << " with a grade " << bureacrat.getGrade() << std::endl;
+	std::cout << this->_name << " was just signed by the bureaucrat " << bureaucrat.getName() << " with a grade " << bureaucrat.getGrade() << std::endl;
 }
 
-const char* Form::GradeTooLowException::except() const throw()
+const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
 
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
+}
+
 std::ostream & operator<<(std::ostream &ostr, Form &instance)
 {
-	ostr << "Form " << instance.getName() << " having a grade to sign " << instance.getSignGrade() << " and a grade to execute "
-		<< instance.getExecuteGrade() << " with signed equal to " << instance.getIsSigned();
+	std::string isSigned = instance.getIsSigned() ? "true" : "false";
+	
+	ostr << "Form " << instance.getName() << " having a grade to sign " << instance.getSignGrade() << " and a grade to execute " << instance.getExecuteGrade() << " with signed status " << isSigned << std::endl;
+
 	return (ostr);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Bureaucrat.cpp                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/02/07 14:15:52 by rubennijhui   #+#    #+#                 */
+/*   Updated: 2024/02/07 14:32:16 by rubennijhui   ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <stdexcept>
@@ -5,60 +17,37 @@
 Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
 {
 	std::cout << "Bureaucrat created with an empty constructor" << std::endl;
-
-	return;
 }
 
 Bureaucrat::Bureaucrat(std::string name, uint32_t grade): _name(name)
 {
+	this->setGrade(grade);
+
 	std::cout << "Bureaucrat created with the name and grade constructor" << std::endl;
-
-	this->setGrade(grade);
-
-	return;
-}
-
-Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(150)
-{
-	std::cout << "Bureaucrat created with the name constructor" << std::endl;
-
-	return;
-}
-
-Bureaucrat::Bureaucrat(uint32_t grade): _name("default")
-{
-	std::cout << "Bureaucrat created with the name constructor" << std::endl;
-
-	this->setGrade(grade);
-
-	return;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << "Bureaucrat " << this->_name << " deconstructed" << std::endl;
-	return;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
 {
-	std::cout << "Bureaucrat created by copy" << std::endl;
-
 	*this = other;
 
-	return;
+	std::cout << "Bureaucrat created by copy" << std::endl;
 }
 
 // ---------------------- Operator overloads -----------------------------------
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
-	std::cout << "Bureaucrat created by assignment" << std::endl;
-
 	if (this != &other)
 	{
 		this->_grade = other._grade;
 	}
+
+	std::cout << "Bureaucrat created by assignment" << std::endl;
 
 	return (*this);
 }
@@ -66,6 +55,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 std::ostream& operator<<(std::ostream &ostr, Bureaucrat& instance)
 {
 	ostr << "Bureaucrat " << instance.getName() << ", bureaucrat grade" << instance.getGrade();
+
 	return (ostr);
 }
 
@@ -85,12 +75,12 @@ void Bureaucrat::setGrade(uint32_t grade)
 	this->_grade = grade;
 }
 
-const std::string Bureaucrat::getName()
+const std::string Bureaucrat::getName() const
 {
 	return (this->_name);
 }
 
-uint32_t Bureaucrat::getGrade()
+uint32_t Bureaucrat::getGrade() const
 {
 	return (this->_grade);
 }
@@ -107,12 +97,12 @@ void Bureaucrat::decrementGrade()
 
 // ---------------------- BureaucratException Functions ------------------------
 
-const char* Bureaucrat::GradeTooLowException::except() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Cannot get a grade > 150!");
 }
 
-const char* Bureaucrat::GradeTooHighException::except() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Cannot get a grade < 1!");
 };

@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/17 10:53:54 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2023/05/17 11:13:05 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/02/07 14:56:19 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class Form
 {
 	public:
 		Form(void);
-		Form(std::string name);
-		Form(std::string name, uint32_t signGrade);
 		Form(std::string name, uint32_t signGrade, uint32_t executeGrade);
 		Form(const Form& other);
 		~Form(void);
@@ -34,16 +32,27 @@ class Form
 
 		//////////////////////////////////////////////////////////////////////////////
 
-		std::string getName();
-		uint32_t	getSignGrade();
-		uint32_t	getExecuteGrade();
-		bool		getIsSigned();
-		void		beSigned(Bureaucrat &bureacrat);
+		std::string getName() const;
+		uint32_t	getSignGrade() const;
+		uint32_t	getExecuteGrade() const;
+		bool		getIsSigned() const;
+
+		//////////////////////////////////////////////////////////////////////////////
+		
+		void		beSigned(Bureaucrat &bureaucrat);
+
+		//////////////////////////////////////////////////////////////////////////////
 
 		class GradeTooLowException : public std::exception
 		{
 		public:
-			virtual const char *except() const throw();
+			virtual const char *what() const throw();
+		};
+
+		class GradeTooHighException : public std::exception
+		{
+		public:
+			virtual const char *what() const throw();
 		};
 
 
@@ -55,6 +64,5 @@ class Form
 };
 
 std::ostream& operator<<(std::ostream &ostr, Form &instance);
-
 
 #endif

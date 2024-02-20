@@ -1,29 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   Bureaucrat.hpp                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2024/02/07 14:15:53 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2024/02/07 14:58:22 by rubennijhui   ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
+
+#include "AForm.hpp"
 
 #include <string>
 #include <stdexcept>
 
-#include "Form.hpp"
-
-class Form;
+class AForm;
 
 class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
+		Bureaucrat(uint32_t grade);
+		Bureaucrat(std::string name);
 		Bureaucrat(std::string name, uint32_t grade);
 		Bureaucrat(const Bureaucrat& other);
 		~Bureaucrat(void);
@@ -39,8 +29,9 @@ class Bureaucrat
 
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(AForm &form);
 
-		void signForm(Form &form);
+		void executeForm(AForm const & form);
 
 		//////////////////////////////////////////////////////////////////////////////
 
@@ -57,11 +48,9 @@ class Bureaucrat
 		};
 
 	private:
+		void setGrade(uint32_t grade);
 		const std::string _name;
 		uint32_t _grade;
-
-		// Methods
-		void setGrade(uint32_t grade);
 };
 
 std::ostream& operator<<(std::ostream &ostr, Bureaucrat &instance);
