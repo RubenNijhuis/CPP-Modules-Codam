@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   Array.hpp                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2024/02/19 09:52:22 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2024/02/20 17:40:39 by rubennijhui   ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnijhuis <rnijhuis@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/19 09:52:22 by rubennijhui       #+#    #+#             */
+/*   Updated: 2024/03/29 15:15:59 by rnijhuis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <stdint.h>
 
 template<typename T>
 class Array {

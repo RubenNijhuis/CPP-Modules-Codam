@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
-#                                                    +#+                       #
-#    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2024/02/19 10:01:24 by rubennijhui   ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rnijhuis <rnijhuis@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/02 20:54:00 by rubennijhui       #+#    #+#              #
+#    Updated: 2024/03/29 15:15:41 by rnijhuis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	Whatever
+EXEC_NAME	=	Iter
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
@@ -31,7 +31,7 @@ OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
 #== Compilation stuff ==#
 
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 $(INC)
+CFLAGS		=	-Wall -Wextra -Werror -std=c++11 -std=gnu++11 $(INC)
 
 #======= Rules =========#
 
