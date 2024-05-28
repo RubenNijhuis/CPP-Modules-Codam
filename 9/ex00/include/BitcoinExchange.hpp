@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   BitcoinExchange.hpp                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2024/04/15 17:59:38 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/04/15 17:59:22 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "BitcoinExchange.hpp"
+#pragma once
 
-int main(int argc, char **argv)
+#include <string>
+#include <map>
+
+class BTC
 {
-	if (argc != 2)
-	{
-		std::cout << "Expected a file" << std::endl;
-		return (1);
-	}
+public:
+	BTC(const std::string buyingMomentsFilePath);
+	~BTC();
 
-	BTC btc(argv[1]);
+private:
+	std::string _buyingMomentsFilePath;
+	std::string _btcTrackerFilePath;
 
-	return (0);
-}
+	std::map<std::string, double> _prices;
+
+	BTC();
+};
