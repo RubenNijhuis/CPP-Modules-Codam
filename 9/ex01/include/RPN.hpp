@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   BitcoinExchange.hpp                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rnijhuis <rnijhuis@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/02 16:12:40 by rnijhuis      #+#    #+#                 */
-/*   Updated: 2024/04/15 17:59:38 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2024/04/15 17:59:22 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "BitcoinExchange.hpp"
+#pragma once
 
-int main(int argc, char **argv)
+#include <string>
+#include <stack>
+
+struct formulaFragment
 {
-	if (argc != 2)
-	{
-		std::cout << "Expected a file" << std::endl;
-		return (1);
-	}
+	std::string fragment;
+	bool isOperator;
+};
 
-	// Initialize the BTC class with the exchange file;
-	BTC btc(argv[1]);
+class RPN
+{
+public:
+	RPN(const std::string formula);
+	~RPN();
 
-	if (!btc.getIsInitialized())
-	{
-		std::cout << "Failed to initialize BTC" << std::endl;
-		return (1);
-	}
+private:
+	bool _validFormula(const std::string formula) const;
+	bool _isOperator(char c) const;
 
-	btc.outputPrices();
+private:
+	std::stack<formulaFragment> _stack;
 
-	return (0);
-}
+	RPN();
+};

@@ -11,26 +11,17 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << "Expected a file" << std::endl;
+		std::cout << "Expected a string" << std::endl;
 		return (1);
 	}
 
-	// Initialize the BTC class with the exchange file;
-	BTC btc(argv[1]);
-
-	if (!btc.getIsInitialized())
-	{
-		std::cout << "Failed to initialize BTC" << std::endl;
-		return (1);
-	}
-
-	btc.outputPrices();
+	RPN rpn(argv[1]);
 
 	return (0);
 }

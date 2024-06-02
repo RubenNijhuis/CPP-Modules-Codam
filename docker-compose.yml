@@ -1,0 +1,22 @@
+name: codam-cpp-dev
+
+services:
+  cpp:
+    container_name: codam-cpp
+    image: cpp-dev-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - cpp_dev_src:/app
+    tty: true # Keep the container running
+    stdin_open: true # Allow interactive mode
+    command: tail -f /dev/null # Keeps the container alive
+
+volumes:
+  cpp_dev_src:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: .

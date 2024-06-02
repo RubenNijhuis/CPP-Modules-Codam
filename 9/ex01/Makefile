@@ -17,7 +17,7 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	BitcoinExchange
+EXEC_NAME	=	RPN
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
@@ -26,7 +26,7 @@ OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 INC			=	-I $(INCLUDE_DIR)
 
 SRCS		=	main.cpp \
-				BitcoinExchange.cpp
+				RPN.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
@@ -44,7 +44,7 @@ objs/%.o:src/%.cpp
 all: $(NAME)
 
 run: $(NAME)
-	./$(OUTPUT) ./assets/input.txt
+	./$(OUTPUT) "7 7 * 7 -"
 
 $(NAME):$(OBJS)
 	@mkdir -p $(dir $@)

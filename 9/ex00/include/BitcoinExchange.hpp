@@ -21,11 +21,17 @@ public:
 	BTC(const std::string buyingMomentsFilePath);
 	~BTC();
 
+	bool getIsInitialized() const;
+	void outputPrices() const;
+
+private:
+	double _getValueForDate(const std::string date) const;
+	double _getConvertedRate(const double valueAtPurchase, const std::string date) const;
+	BTC();
+
 private:
 	std::string _buyingMomentsFilePath;
 	std::string _btcTrackerFilePath;
-
+	bool _isInitialized;
 	std::map<std::string, double> _prices;
-
-	BTC();
 };

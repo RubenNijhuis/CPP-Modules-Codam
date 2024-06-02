@@ -50,12 +50,19 @@ BTC::BTC(const std::string buyingMomentsFilePath)
         file.close();
     }
 
+    this->_isInitialized = true;
+}
+
+void BTC::outputPrices() const
+{
     // Get buying moments
     std::ifstream buyingMomentsFile(this->_buyingMomentsFilePath);
-    if (buyingMomentsFile.is_open())
+    if (!buyingMomentsFile.is_open())
+    {
+        std::cerr << "Failed to open file" << std::endl;
+        exit(0);
+    }
 
-        std::cout << "File is open" << std::endl;
-    // Read contents
     std::string line;
 
     // Skip first line due to file format
@@ -63,37 +70,84 @@ BTC::BTC(const std::string buyingMomentsFilePath)
 
     while (std::getline(buyingMomentsFile, line))
     {
-        // split on the string " | "
+        // Get date and buy in amount by splitting the line at the '|'
         std::string date = line.substr(0, line.find('|') - 1);
         std::string buyInAmountStr = line.substr(line.find('|') + 1);
 
         try
         {
             double buyInAmount = std::stod(buyInAmountStr);
+            if (buyInAmount <= 0)
+            {
+                std::cerr << "Error: not a positive number." << std::endl;
+                continue;
+            }
 
-            // get the value of the buy in amount at the date
-            double price = this->_prices[date];
+            double exchangeRate = this->_getConvertedRate(buyInAmount, date);
+            if (exchangeRate == -1.0)
+            {
+                std::cerr << "Error: bad input => " << date << std::endl;
+                continue;
+            }
 
-            std::cout << price << std::endl;
-
-            // calculate the value of the buy in amount at the date
-            double value = buyInAmount * price;
-
-            // calculate the value at the last date
-            double lastValue = buyInAmount * this->_prices.rbegin()->second;
-
-            // Your program should display on the standard output the result of the value multiplied by the exchange rate according to the date indicated in your database.
-            double exchangeRate = value / lastValue;
+            if (exchangeRate > 1000000)
+            {
+                std::cerr << "Error: too large a number." << std::endl;
+                continue;
+            }
 
             std::cout << date << " => " << buyInAmount << " = " << exchangeRate << std::endl;
         }
         catch (std::exception &e)
         {
             std::cerr << "Error: " << e.what() << std::endl;
-            exit(0);
         }
     }
+
     buyingMomentsFile.close();
+}
+
+////////////////////////////// PRIVATE /////////////////////////////////////////
+
+double BTC::_getValueForDate(const std::string date) const
+{
+    std::map<std::string, double>::const_iterator it = this->_prices.find(date);
+
+    // If the date is found, return the corresponding value
+    if (it != this->_prices.end())
+    {
+        return it->second;
+    }
+
+    // If the date is not found, search for the closest previous date
+    it = this->_prices.lower_bound(date);
+
+    // If lower_bound returns the first element, there is no previous date
+    // or some other indication that no valid date was found
+    if (it == this->_prices.begin())
+        return -1.0;
+
+    // Move to the previous element
+    --it;
+
+    return it->second;
+}
+
+bool BTC::getIsInitialized() const
+{
+    return this->_isInitialized;
+}
+
+double BTC::_getConvertedRate(const double valueAtPurchase, const std::string date) const
+{
+    double valueAtDate = this->_getValueForDate(date);
+
+    if (valueAtDate == -1.0)
+    {
+        return -1.0;
+    }
+
+    return valueAtPurchase * valueAtDate;
 }
 
 BTC::~BTC() {}
