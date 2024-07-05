@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   BitcoinExchange.cpp                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2024/04/15 17:45:10 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2024/04/15 18:01:51 by rubennijhui   ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 17:45:10 by rubennijhui       #+#    #+#             */
+/*   Updated: 2024/06/13 14:30:52 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,67 +17,72 @@
 
 RPN::RPN(const std::string formula)
 {
+    std::stack<int> stack;
+    int operandPrimary;
+    int operandSecondary;
+    int result;
+
     if (!this->_validFormula(formula))
     {
         std::cout << "Invalid formula" << std::endl;
         return;
     }
 
-    std::string::const_iterator it;
-    std::stack<formulaFragment> _preReversed;
-    for (it = formula.begin(); it != formula.end(); it++)
+    for (size_t i = 0; i < formula.size(); i++)
     {
-        if (*it == ' ')
+        if (formula[i] == ' ')
             continue;
+        if (!_isOperator(formula[i]))
+        {
+            stack.push(formula[i] - '0');
+            continue;
+        }
 
-        formulaFragment fragment;
-        fragment.fragment = *it;
-        fragment.isOperator = this->_isOperator(*it);
-        _preReversed.push(fragment);
+        if (stack.size() < 2)
+        {
+            throw std::range_error("Error");
+        }
+
+        operandSecondary = stack.top();
+        stack.pop();
+
+        operandPrimary = stack.top();
+        stack.pop();
+
+        switch (formula[i])
+        {
+        case '+':
+            result = operandPrimary + operandSecondary;
+            break;
+
+        case '-':
+            result = operandPrimary - operandSecondary;
+            break;
+
+        case '*':
+            result = operandPrimary * operandSecondary;
+            break;
+
+        case '/':
+        {
+            if (operandSecondary == 0)
+                throw std::invalid_argument("Error");
+            result = operandPrimary / operandSecondary;
+            break;
+        }
+        default:
+            throw std::logic_error("Error");
+        }
+
+        stack.push(result);
     }
 
-    // reverse the stack
-    while (!_preReversed.empty())
+    if (stack.size() != 1)
     {
-        this->_stack.push(_preReversed.top());
-        _preReversed.pop();
+        throw std::range_error("Invalid formula end");
     }
 
-    // Get starting point
-    double result = std::stod(this->_stack.top().fragment);
-    this->_stack.pop();
-
-    // Loop through the stack
-    while (!this->_stack.empty())
-    {
-        // get the next number
-        formulaFragment fragmentNum = this->_stack.top();
-        this->_stack.pop();
-
-        // get the next operator
-        formulaFragment fragmentOperator = this->_stack.top();
-        this->_stack.pop();
-
-        // calculate the result
-        if (fragmentOperator.fragment == "+")
-        {
-            result += std::stod(fragmentNum.fragment);
-        }
-        else if (fragmentOperator.fragment == "-")
-        {
-            result -= std::stod(fragmentNum.fragment);
-        }
-        else if (fragmentOperator.fragment == "*")
-        {
-            result *= std::stod(fragmentNum.fragment);
-        }
-        else if (fragmentOperator.fragment == "/")
-        {
-            result /= std::stod(fragmentNum.fragment);
-        }
-    }
-
-    std::cout << result << std::endl;
+    std::cout << stack.top() << std::endl;
 }
 
 bool RPN::_isOperator(char c) const
@@ -97,11 +102,6 @@ bool RPN::_validFormula(const std::string formula) const
         {
             return false;
         }
-    }
-
-    if (!this->_isOperator(formula.back()))
-    {
-        return false;
     }
 
     return true;

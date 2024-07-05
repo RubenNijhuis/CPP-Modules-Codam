@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/02 20:54:00 by rubennijhui   #+#    #+#                  #
-#    Updated: 2024/04/15 17:44:01 by rubennijhui   ########   odam.nl          #
+#    Updated: 2024/07/02 13:15:23 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,16 @@ SRC_DIR		=	src
 OBJS_DIR	=	objs
 BIN_DIR		=	bin
 INCLUDE_DIR	=	include
-EXEC_NAME	=	RPN
+EXEC_NAME	=	MargeSort
 NAME		=	$(BIN_DIR)/$(EXEC_NAME)
 OUTPUT		=	$(BIN_DIR)/$(EXEC_NAME)
 
 #======== SRCS =========#
 
-INC			=	-I $(INCLUDE_DIR)
+INC			=	-I $(INCLUDE_DIR) 
 
 SRCS		=	main.cpp \
-				RPN.cpp
+				PMergeMe.cpp
 
 OBJS		=	$(addprefix $(OBJS_DIR)/,$(SRCS:.cpp=.o))
 
@@ -44,7 +44,7 @@ objs/%.o:src/%.cpp
 all: $(NAME)
 
 run: $(NAME)
-	./$(OUTPUT) "7 7 * 7 -"
+	./$(OUTPUT) "8 7 6 5 4 3 1 100 -10 2 2 2 2"
 
 $(NAME):$(OBJS)
 	@mkdir -p $(dir $@)
